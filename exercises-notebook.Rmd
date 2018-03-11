@@ -1,6 +1,10 @@
 ---
 title: "Data Analytics and Visualizations in R - Exercises"
 output:
+  pdf_document:
+    toc: true
+    toc_depth: 4
+    number_sections: true
   html_document:
     df_print: paged
     toc: true
@@ -10,10 +14,6 @@ output:
     highlight: tango
     code_folding: show
     keep_md: true
-  pdf_document:
-    toc: true
-    toc_depth: 4
-    number_sections: true
 ---
 
 # Basic R Data Structures
@@ -67,8 +67,7 @@ as.character(a)
 What happens when you try to generate an atomic vector with `c()`which is composed of different types of elements? What is the `mean()` 
 of a logical vector?
 
-```{r set-options, cache=FALSE}
-options(width = 110)
+```{r}
 # When we attempt to combine different types they will be coerced to the most flexible type. Types from least
 # to most flexible are: logical, integer, double and character.
 
