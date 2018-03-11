@@ -1725,6 +1725,7 @@ $(document).ready(function () {
 <li><a href="#vector-concatenation"><span class="toc-section-number">1.4</span> Vector Concatenation</a></li>
 <li><a href="#from-vectors-to-data.frames"><span class="toc-section-number">1.5</span> From Vectors to <code>data.frames</code></a></li>
 <li><a href="#attributes"><span class="toc-section-number">1.6</span> Attributes</a></li>
+<li><a href="#factors"><span class="toc-section-number">1.7</span> Factors</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1956,6 +1957,36 @@ $(document).ready(function () {
 ## attr(,&quot;class&quot;)
 ## [1] &quot;Batman&quot;</code></pre>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co"># Answer - Nothing changes</span></a></code></pre></div>
+</div>
+<div id="factors" class="section level2">
+<h2><span class="header-section-number">1.7</span> Factors</h2>
+<ul>
+<li>What is the difference between a Factor and a Vector?</li>
+<li>Create a vector of length 30 with three levels <em>Rita Repulsa, Lord Zedd</em> and <em>Rito Revolto</em> and equal length for each level</li>
+<li>What happens if you replace the second element of the vector with <em>Shredder</em></li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># Answer</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="co"># A. A factor is a vector that can contain only predefined values, and is used to store categorical data.</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="co"># It is stored as an integer with a character string associated with each integer value</span></a>
+<a class="sourceLine" id="cb50-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="co"># B.</span></a>
+<a class="sourceLine" id="cb50-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb50-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">k=</span><span class="dv">10</span>, <span class="dt">length=</span><span class="dv">30</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Rita Repulsa&quot;</span>, <span class="st">&quot;Lord Zedd&quot;</span>, <span class="st">&quot;Rito Revolto&quot;</span>))</a>
+<a class="sourceLine" id="cb50-8" data-line-number="8"><span class="kw">str</span>(x)</a></code></pre></div>
+<pre><code>##  Factor w/ 3 levels &quot;Rita Repulsa&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">levels</span>(x)</a></code></pre></div>
+<pre><code>## [1] &quot;Rita Repulsa&quot; &quot;Lord Zedd&quot;    &quot;Rito Revolto&quot;</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">attributes</span>(x)</a></code></pre></div>
+<pre><code>## $levels
+## [1] &quot;Rita Repulsa&quot; &quot;Lord Zedd&quot;    &quot;Rito Revolto&quot;
+## 
+## $class
+## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co"># C</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">x[<span class="dv">2</span>] &lt;-<span class="st"> &quot;Shredder&quot;</span></a></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 2, value = &quot;Shredder&quot;): invalid factor
+## level, NA generated</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co"># It doesn't work. We get the error 'NA generated'</span></a></code></pre></div>
 </div>
 </div>
 

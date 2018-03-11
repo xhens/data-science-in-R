@@ -194,3 +194,26 @@ my_df
 # Answer - Nothing changes
 ```
 
+## Factors
+
+* What is the difference between a Factor and a Vector?
+* Create a vector of length 30 with three levels *Rita Repulsa, Lord Zedd* and *Rito Revolto* and equal length for each level
+* What happens if you replace the second element of the vector with *Shredder*
+
+```{r}
+# Answer
+# A. A factor is a vector that can contain only predefined values, and is used to store categorical data.
+# It is stored as an integer with a character string associated with each integer value
+
+# B.
+
+x <- gl(n=3, k=10, length=30, labels=c("Rita Repulsa", "Lord Zedd", "Rito Revolto"))
+str(x)
+levels(x)
+attributes(x)
+
+# C
+x[2] <- "Shredder"
+# It doesn't work. We get the error 'NA generated'
+```
+
