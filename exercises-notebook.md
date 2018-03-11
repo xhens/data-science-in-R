@@ -474,3 +474,51 @@ x[2] <- "Shredder"
 # It doesn't work. We get the error 'NA generated'
 ```
 
+## More fun with factors
+
+
+```r
+f1 <- factor(letters)
+levels(f1) <- rev(levels(f1))
+f2 <- rev(factor(letters))
+f3 <- factor(letters, levels = rev(letters))
+```
+
+The function `rev` reverses the order of an orderable object. What is the difference between f1, f2 and f3? Why?
+
+
+```r
+# Answer
+f1 <- factor(letters)
+levels(f1) <- rev(levels(f1))
+
+# f1 goes from a to z and when we apply the levels(f1), z will become 1 and a = 26
+
+f2 <- rev(factor(letters))
+
+# f2 goes from z to a. but the levels are not changed.
+
+f3 <- factor(letters, levels = rev(letters))
+
+# f3 goes from a - z, but the underlying encoding goes from z = 1 to a = 26.  We create the vector with the 
+# letters a to z BUT the mapped integer structure 26 to 1. Hence the levels but not the vector are reversed
+
+f3
+```
+
+```
+##  [1] a b c d e f g h i j k l m n o p q r s t u v w x y z
+## Levels: z y x w v u t s r q p o n m l k j i h g f e d c b a
+```
+
+```r
+# Reversing f3 will give f1
+
+rev(f3)
+```
+
+```
+##  [1] z y x w v u t s r q p o n m l k j i h g f e d c b a
+## Levels: z y x w v u t s r q p o n m l k j i h g f e d c b a
+```
+

@@ -1726,6 +1726,7 @@ $(document).ready(function () {
 <li><a href="#from-vectors-to-data.frames"><span class="toc-section-number">1.5</span> From Vectors to <code>data.frames</code></a></li>
 <li><a href="#attributes"><span class="toc-section-number">1.6</span> Attributes</a></li>
 <li><a href="#factors"><span class="toc-section-number">1.7</span> Factors</a></li>
+<li><a href="#more-fun-with-factors"><span class="toc-section-number">1.8</span> More fun with factors</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1987,6 +1988,37 @@ $(document).ready(function () {
 <pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 2, value = &quot;Shredder&quot;): invalid factor
 ## level, NA generated</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co"># It doesn't work. We get the error 'NA generated'</span></a></code></pre></div>
+</div>
+<div id="more-fun-with-factors" class="section level2">
+<h2><span class="header-section-number">1.8</span> More fun with factors</h2>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters)</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">levels</span>(f1) &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">levels</span>(f1))</a>
+<a class="sourceLine" id="cb59-3" data-line-number="3">f2 &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">factor</span>(letters))</a>
+<a class="sourceLine" id="cb59-4" data-line-number="4">f3 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters, <span class="dt">levels =</span> <span class="kw">rev</span>(letters))</a></code></pre></div>
+<p>The function <code>rev</code> reverses the order of an orderable object. What is the difference between f1, f2 and f3? Why?</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co"># Answer</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters)</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw">levels</span>(f1) &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">levels</span>(f1))</a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co"># f1 goes from a to z and when we apply the levels(f1), z will become 1 and a = 26</span></a>
+<a class="sourceLine" id="cb60-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7">f2 &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">factor</span>(letters))</a>
+<a class="sourceLine" id="cb60-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb60-9" data-line-number="9"><span class="co"># f2 goes from z to a. but the levels are not changed.</span></a>
+<a class="sourceLine" id="cb60-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb60-11" data-line-number="11">f3 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters, <span class="dt">levels =</span> <span class="kw">rev</span>(letters))</a>
+<a class="sourceLine" id="cb60-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb60-13" data-line-number="13"><span class="co"># f3 goes from a - z, but the underlying encoding goes from z = 1 to a = 26.  We create the vector with the </span></a>
+<a class="sourceLine" id="cb60-14" data-line-number="14"><span class="co"># letters a to z BUT the mapped integer structure 26 to 1. Hence the levels but not the vector are reversed</span></a>
+<a class="sourceLine" id="cb60-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb60-16" data-line-number="16">f3</a></code></pre></div>
+<pre><code>##  [1] a b c d e f g h i j k l m n o p q r s t u v w x y z
+## Levels: z y x w v u t s r q p o n m l k j i h g f e d c b a</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># Reversing f3 will give f1</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="kw">rev</span>(f3)</a></code></pre></div>
+<pre><code>##  [1] z y x w v u t s r q p o n m l k j i h g f e d c b a
+## Levels: z y x w v u t s r q p o n m l k j i h g f e d c b a</code></pre>
 </div>
 </div>
 
