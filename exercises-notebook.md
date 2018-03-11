@@ -41,10 +41,11 @@ not, what are the functions that you can use for this purpose?
 
 
 ```r
-# Atomic vectors can contain elements of the same type. The elements of a list can have different types.
+# Atomic vectors can contain elements of the same type. The elements of a list 
+# can have different types.
 
-# Yes, we can use the `is.vector()` function to understand is the structure is a vector. 
-# It will return TRUE or FALSE.
+# Yes, we can use the `is.vector()` function to understand is the structure is a 
+# vector. It will return TRUE or FALSE.
 
 a <- list(c(1,2,3), "bla", TRUE)
 print(a)
@@ -70,9 +71,10 @@ is.vector(a)
 ```
 
 ```r
-# Best response: If possible you should use type specific coercions like `as.numeric()` or `as.character()`. 
-# But since lists are heterogenous, this might not work. A more general function is `unlist()`, 
-# which returns the list into a vector of the most general type. Notice this difference:
+# Best response: If possible you should use type specific coercions like 
+# `as.numeric()` or `as.character()`. But since lists are heterogenous, this 
+# might not work. A more general function is `unlist()`,  which returns the list 
+# into a vector of the most general type. Notice this difference:
 
 a <- list(c(1,2,3), "bla", TRUE)
 unlist(a)
@@ -104,8 +106,9 @@ of a logical vector?
 
 
 ```r
-# When we attempt to combine different types they will be coerced to the most flexible type. Types from least
-# to most flexible are: logical, integer, double and character.
+# When we attempt to combine different types they will be coerced to the most 
+# flexible type. Types from least to most flexible are: logical, integer, double
+#  and character.
 
 str(c("a", 1)) # 1 corced to char
 ```
@@ -115,7 +118,8 @@ str(c("a", 1)) # 1 corced to char
 ```
 
 ```r
-# As TRUE is encoded as 1 and FALSE as 0, the mean is the number of TRUEs devided by the vector length.
+# As TRUE is encoded as 1 and FALSE as 0, the mean is the number of TRUEs 
+# devided by the vector length.
 mean(c(TRUE, FALSE,FALSE))
 ```
 
@@ -137,8 +141,8 @@ y <- c(list(1,2), c(3,4))
 
 ```r
 # Answer
-# X will combine seveal lists into one. Given a combination of atomic vectors and lists, y will coerce the 
-# vectors to lists before combining them.
+# X will combine seveal lists into one. Given a combination of atomic vectors 
+# and lists, y will coerce the vectors to lists before combining them.
 str(x)
 ```
 
@@ -427,8 +431,9 @@ my_df
 
 ```r
 # Answer
-# A. A factor is a vector that can contain only predefined values, and is used to store categorical data.
-# It is stored as an integer with a character string associated with each integer value
+# A. A factor is a vector that can contain only predefined values, and is used 
+# to store categorical data. It is stored as an integer with a character string 
+# associated with each integer value
 
 # B.
 
@@ -492,7 +497,7 @@ The function `rev` reverses the order of an orderable object. What is the differ
 f1 <- factor(letters)
 levels(f1) <- rev(levels(f1))
 
-# f1 goes from a to z and when we apply the levels(f1), z will become 1 and a = 26
+# f1 goes from a to z and when we apply the levels(f1), z will become 1 and a=26
 
 f2 <- rev(factor(letters))
 
@@ -500,8 +505,9 @@ f2 <- rev(factor(letters))
 
 f3 <- factor(letters, levels = rev(letters))
 
-# f3 goes from a - z, but the underlying encoding goes from z = 1 to a = 26.  We create the vector with the 
-# letters a to z BUT the mapped integer structure 26 to 1. Hence the levels but not the vector are reversed
+# f3 goes from a - z, but the underlying encoding goes from z = 1 to a = 26.  
+# We create the vector with the letters a to z BUT the mapped integer structure 
+# 26 to 1. Hence the levels but not the vector are reversed
 
 f3
 ```
@@ -585,3 +591,233 @@ tail(binded_df)
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V4"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["V5"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["V2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["V3"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"5","2":"1.280","3":"84","4":"u","_rn_":"21"},{"1":"5","2":"1.344","3":"88","4":"u","_rn_":"22"},{"1":"3","2":"1.408","3":"92","4":"w","_rn_":"23"},{"1":"3","2":"1.472","3":"96","4":"w","_rn_":"24"},{"1":"1","2":"1.536","3":"100","4":"y","_rn_":"25"},{"1":"1","2":"1.600","3":"104","4":"y","_rn_":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
+## Computation on data.frames
+
+Create the data.frame *df* with `df <- as.data.frame(matrix(runif(9e6), 3e3, 3e3))`
+This will create a data.frame with 3000 columns and rows and a total of 9mil values.
+
+Now compute the sum of any row, then compute the sum of any column. Measure the time
+for both operations. Why are the times different, although the size is the same?
+
+* **Hint1:** The time is measured with the function `system.time(my_function_call())`, e.g: `system.time(mean(my_vector))`
+* **Hint2:** The sum can be computed with the sum function `sum(my_vector)`
+* **Hint2:** Columns and rows are selected by single brackets. Rows: `df[row_number,]`, Columns: `df[,col_number]`
+
+
+```r
+# Answer
+
+df <- as.data.frame(matrix(runif(9e6), 3e3, 3e3))
+
+# rows
+system.time(res <- sum(df[1,]))
+```
+
+```
+##    user  system elapsed 
+##   0.023   0.000   0.023
+```
+
+```r
+res
+```
+
+```
+## [1] 1490.538
+```
+
+```r
+# columngs
+system.time(res2 <- sum(df[,1]))
+```
+
+```
+##    user  system elapsed 
+##       0       0       0
+```
+
+```r
+res2
+```
+
+```
+## [1] 1518.813
+```
+
+```r
+# Look at the structure of the objects over which we are computing the sum
+# Column
+str(df[1,])
+```
+
+```
+## 'data.frame':	1 obs. of  3000 variables:
+##  $ V1   : num 0.0845
+##  $ V2   : num 0.938
+##  $ V3   : num 0.437
+##  $ V4   : num 0.685
+##  $ V5   : num 0.329
+##  $ V6   : num 0.088
+##  $ V7   : num 0.367
+##  $ V8   : num 0.913
+##  $ V9   : num 0.618
+##  $ V10  : num 0.35
+##  $ V11  : num 0.42
+##  $ V12  : num 0.2
+##  $ V13  : num 0.841
+##  $ V14  : num 0.883
+##  $ V15  : num 0.51
+##  $ V16  : num 0.232
+##  $ V17  : num 0.71
+##  $ V18  : num 0.0496
+##  $ V19  : num 0.799
+##  $ V20  : num 0.998
+##  $ V21  : num 0.23
+##  $ V22  : num 0.428
+##  $ V23  : num 0.469
+##  $ V24  : num 0.607
+##  $ V25  : num 0.809
+##  $ V26  : num 0.0907
+##  $ V27  : num 0.147
+##  $ V28  : num 0.393
+##  $ V29  : num 0.254
+##  $ V30  : num 0.944
+##  $ V31  : num 0.672
+##  $ V32  : num 0.113
+##  $ V33  : num 0.841
+##  $ V34  : num 0.48
+##  $ V35  : num 0.862
+##  $ V36  : num 0.441
+##  $ V37  : num 0.499
+##  $ V38  : num 0.0138
+##  $ V39  : num 0.316
+##  $ V40  : num 0.346
+##  $ V41  : num 0.336
+##  $ V42  : num 0.253
+##  $ V43  : num 0.486
+##  $ V44  : num 0.0899
+##  $ V45  : num 0.0642
+##  $ V46  : num 0.736
+##  $ V47  : num 0.541
+##  $ V48  : num 0.115
+##  $ V49  : num 0.243
+##  $ V50  : num 0.117
+##  $ V51  : num 0.96
+##  $ V52  : num 0.883
+##  $ V53  : num 0.0313
+##  $ V54  : num 0.0677
+##  $ V55  : num 0.326
+##  $ V56  : num 0.447
+##  $ V57  : num 0.421
+##  $ V58  : num 0.0913
+##  $ V59  : num 0.627
+##  $ V60  : num 0.423
+##  $ V61  : num 0.765
+##  $ V62  : num 0.37
+##  $ V63  : num 0.997
+##  $ V64  : num 0.776
+##  $ V65  : num 0.219
+##  $ V66  : num 0.608
+##  $ V67  : num 0.41
+##  $ V68  : num 0.272
+##  $ V69  : num 0.648
+##  $ V70  : num 0.172
+##  $ V71  : num 0.989
+##  $ V72  : num 0.199
+##  $ V73  : num 0.0972
+##  $ V74  : num 0.213
+##  $ V75  : num 0.535
+##  $ V76  : num 0.171
+##  $ V77  : num 0.754
+##  $ V78  : num 0.776
+##  $ V79  : num 0.3
+##  $ V80  : num 0.208
+##  $ V81  : num 0.775
+##  $ V82  : num 0.332
+##  $ V83  : num 0.88
+##  $ V84  : num 0.795
+##  $ V85  : num 0.466
+##  $ V86  : num 0.808
+##  $ V87  : num 0.171
+##  $ V88  : num 0.866
+##  $ V89  : num 0.626
+##  $ V90  : num 0.484
+##  $ V91  : num 0.554
+##  $ V92  : num 0.37
+##  $ V93  : num 0.31
+##  $ V94  : num 0.222
+##  $ V95  : num 0.217
+##  $ V96  : num 0.236
+##  $ V97  : num 0.685
+##  $ V98  : num 0.986
+##  $ V99  : num 0.111
+##   [list output truncated]
+```
+
+```r
+# Row
+str(df[,1])
+```
+
+```
+##  num [1:3000] 8.45e-02 3.19e-05 9.78e-02 6.85e-01 3.63e-01 ...
+```
+
+```r
+# As we can see the extracted column is a numeric vector. But the extracted
+# row is a list. Under the hood the sum function is iterating in C/Fortran
+# over the specific structure. Iterating over a native array of doubles is
+# faster, than iterating over a structure, where at each position, the value
+# has to be retrieved from an object possibly strored somewhere further away
+# in memory.
+```
+
+## Missing Values
+
+* If NA is just a placeholder for a missing value of the same type and Infinity is of type
+double, why is Infinity plus NA not Infinity?
+
+**Hint:**
+
+```r
+paste(paste(rep((Inf - Inf), 20), collapse = ""), "Batman!")
+```
+
+```
+## [1] "NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman!"
+```
+
+
+```r
+# Answer:
+# Because infinity is not a well defined number, but a concept with
+# the type 'double' in R. Adding or subtracting any number from infinity
+# will give infinity. However NA is placeholder for any value of the same
+# type and therefore also for infinity. As infinity plus/minus infinity
+# is not defined, adding NA to infinity can theoretically lead to
+# Nan (not a number). Therefore Inf + NA will produce NA.
+
+Inf + NA
+```
+
+```
+## [1] NA
+```
+
+```r
+Inf + 1
+```
+
+```
+## [1] Inf
+```
+
+```r
+Inf - Inf
+```
+
+```
+## [1] NaN
+```
+

@@ -1729,6 +1729,8 @@ $(document).ready(function () {
 <li><a href="#more-fun-with-factors"><span class="toc-section-number">1.8</span> More fun with factors</a></li>
 <li><a href="#creating-data.frames"><span class="toc-section-number">1.9</span> Creating data.frames</a></li>
 <li><a href="#combining-data.frames"><span class="toc-section-number">1.10</span> Combining <code>data.frames</code></a></li>
+<li><a href="#computation-on-data.frames"><span class="toc-section-number">1.11</span> Computation on data.frames</a></li>
+<li><a href="#missing-values"><span class="toc-section-number">1.12</span> Missing Values</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1746,13 +1748,14 @@ $(document).ready(function () {
 <p>What is the major difference between atomic vectors and lists? How can you turn a list into an atomic vector?</p>
 <p>In order to check if an object is of a certain type you can use <code>is.[type](object)</code> ,e.g. <code>is.integer(object)</code></p>
 <p>Can you use the <code>is.vector()</code> function to understand whether a data structure is a vector? If not, what are the functions that you can use for this purpose?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Atomic vectors can contain elements of the same type. The elements of a list can have different types.</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># Yes, we can use the `is.vector()` function to understand is the structure is a vector. </span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># It will return TRUE or FALSE.</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">a &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="st">&quot;bla&quot;</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw">print</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Atomic vectors can contain elements of the same type. The elements of a list </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># can have different types.</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># Yes, we can use the `is.vector()` function to understand is the structure is a </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># vector. It will return TRUE or FALSE.</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">a &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="st">&quot;bla&quot;</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw">print</span>(a)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3
 ## 
@@ -1763,12 +1766,13 @@ $(document).ready(function () {
 ## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">is.vector</span>(a)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Best response: If possible you should use type specific coercions like `as.numeric()` or `as.character()`. </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># But since lists are heterogenous, this might not work. A more general function is `unlist()`, </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co"># which returns the list into a vector of the most general type. Notice this difference:</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">a &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="st">&quot;bla&quot;</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw">unlist</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Best response: If possible you should use type specific coercions like </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># `as.numeric()` or `as.character()`. But since lists are heterogenous, this </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co"># might not work. A more general function is `unlist()`,  which returns the list </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co"># into a vector of the most general type. Notice this difference:</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">a &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="st">&quot;bla&quot;</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">unlist</span>(a)</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;    &quot;2&quot;    &quot;3&quot;    &quot;bla&quot;  &quot;TRUE&quot;</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">as.character</span>(a)</a></code></pre></div>
 <pre><code>## [1] &quot;c(1, 2, 3)&quot; &quot;bla&quot;        &quot;TRUE&quot;</code></pre>
@@ -1779,13 +1783,15 @@ $(document).ready(function () {
 <div id="atomic-vector-concatenation" class="section level2">
 <h2><span class="header-section-number">1.3</span> Atomic Vector Concatenation</h2>
 <p>What happens when you try to generate an atomic vector with <code>c()</code>which is composed of different types of elements? What is the <code>mean()</code> of a logical vector?</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># When we attempt to combine different types they will be coerced to the most flexible type. Types from least</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># to most flexible are: logical, integer, double and character.</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="kw">str</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>)) <span class="co"># 1 corced to char</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># When we attempt to combine different types they will be coerced to the most </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># flexible type. Types from least to most flexible are: logical, integer, double</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#  and character.</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="kw">str</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>)) <span class="co"># 1 corced to char</span></a></code></pre></div>
 <pre><code>##  chr [1:2] &quot;a&quot; &quot;1&quot;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># As TRUE is encoded as 1 and FALSE as 0, the mean is the number of TRUEs devided by the vector length.</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>,<span class="ot">FALSE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># As TRUE is encoded as 1 and FALSE as 0, the mean is the number of TRUEs </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># devided by the vector length.</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>,<span class="ot">FALSE</span>))</a></code></pre></div>
 <pre><code>## [1] 0.3333333</code></pre>
 </div>
 <div id="vector-concatenation" class="section level2">
@@ -1794,8 +1800,8 @@ $(document).ready(function () {
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">list</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">list</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># Answer</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># X will combine seveal lists into one. Given a combination of atomic vectors and lists, y will coerce the </span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co"># vectors to lists before combining them.</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># X will combine seveal lists into one. Given a combination of atomic vectors </span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co"># and lists, y will coerce the vectors to lists before combining them.</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"><span class="kw">str</span>(x)</a></code></pre></div>
 <pre><code>## List of 2
 ##  $ :List of 2
@@ -1969,13 +1975,14 @@ $(document).ready(function () {
 <li>What happens if you replace the second element of the vector with <em>Shredder</em></li>
 </ul>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># Answer</span></a>
-<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="co"># A. A factor is a vector that can contain only predefined values, and is used to store categorical data.</span></a>
-<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="co"># It is stored as an integer with a character string associated with each integer value</span></a>
-<a class="sourceLine" id="cb50-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="co"># B.</span></a>
-<a class="sourceLine" id="cb50-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb50-7" data-line-number="7">x &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">k=</span><span class="dv">10</span>, <span class="dt">length=</span><span class="dv">30</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Rita Repulsa&quot;</span>, <span class="st">&quot;Lord Zedd&quot;</span>, <span class="st">&quot;Rito Revolto&quot;</span>))</a>
-<a class="sourceLine" id="cb50-8" data-line-number="8"><span class="kw">str</span>(x)</a></code></pre></div>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="co"># A. A factor is a vector that can contain only predefined values, and is used </span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="co"># to store categorical data. It is stored as an integer with a character string </span></a>
+<a class="sourceLine" id="cb50-4" data-line-number="4"><span class="co"># associated with each integer value</span></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb50-6" data-line-number="6"><span class="co"># B.</span></a>
+<a class="sourceLine" id="cb50-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb50-8" data-line-number="8">x &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">k=</span><span class="dv">10</span>, <span class="dt">length=</span><span class="dv">30</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Rita Repulsa&quot;</span>, <span class="st">&quot;Lord Zedd&quot;</span>, <span class="st">&quot;Rito Revolto&quot;</span>))</a>
+<a class="sourceLine" id="cb50-9" data-line-number="9"><span class="kw">str</span>(x)</a></code></pre></div>
 <pre><code>##  Factor w/ 3 levels &quot;Rita Repulsa&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">levels</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;Rita Repulsa&quot; &quot;Lord Zedd&quot;    &quot;Rito Revolto&quot;</code></pre>
@@ -2002,7 +2009,7 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb60-2" data-line-number="2">f1 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters)</a>
 <a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw">levels</span>(f1) &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">levels</span>(f1))</a>
 <a class="sourceLine" id="cb60-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co"># f1 goes from a to z and when we apply the levels(f1), z will become 1 and a = 26</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co"># f1 goes from a to z and when we apply the levels(f1), z will become 1 and a=26</span></a>
 <a class="sourceLine" id="cb60-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb60-7" data-line-number="7">f2 &lt;-<span class="st"> </span><span class="kw">rev</span>(<span class="kw">factor</span>(letters))</a>
 <a class="sourceLine" id="cb60-8" data-line-number="8"></a>
@@ -2010,10 +2017,11 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb60-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb60-11" data-line-number="11">f3 &lt;-<span class="st"> </span><span class="kw">factor</span>(letters, <span class="dt">levels =</span> <span class="kw">rev</span>(letters))</a>
 <a class="sourceLine" id="cb60-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb60-13" data-line-number="13"><span class="co"># f3 goes from a - z, but the underlying encoding goes from z = 1 to a = 26.  We create the vector with the </span></a>
-<a class="sourceLine" id="cb60-14" data-line-number="14"><span class="co"># letters a to z BUT the mapped integer structure 26 to 1. Hence the levels but not the vector are reversed</span></a>
-<a class="sourceLine" id="cb60-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb60-16" data-line-number="16">f3</a></code></pre></div>
+<a class="sourceLine" id="cb60-13" data-line-number="13"><span class="co"># f3 goes from a - z, but the underlying encoding goes from z = 1 to a = 26.  </span></a>
+<a class="sourceLine" id="cb60-14" data-line-number="14"><span class="co"># We create the vector with the letters a to z BUT the mapped integer structure </span></a>
+<a class="sourceLine" id="cb60-15" data-line-number="15"><span class="co"># 26 to 1. Hence the levels but not the vector are reversed</span></a>
+<a class="sourceLine" id="cb60-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb60-17" data-line-number="17">f3</a></code></pre></div>
 <pre><code>##  [1] a b c d e f g h i j k l m n o p q r s t u v w x y z
 ## Levels: z y x w v u t s r q p o n m l k j i h g f e d c b a</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># Reversing f3 will give f1</span></a>
@@ -2063,6 +2071,168 @@ $(document).ready(function () {
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V4"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["V5"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["V2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["V3"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"5","2":"1.280","3":"84","4":"u","_rn_":"21"},{"1":"5","2":"1.344","3":"88","4":"u","_rn_":"22"},{"1":"3","2":"1.408","3":"92","4":"w","_rn_":"23"},{"1":"3","2":"1.472","3":"96","4":"w","_rn_":"24"},{"1":"1","2":"1.536","3":"100","4":"y","_rn_":"25"},{"1":"1","2":"1.600","3":"104","4":"y","_rn_":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+</div>
+<div id="computation-on-data.frames" class="section level2">
+<h2><span class="header-section-number">1.11</span> Computation on data.frames</h2>
+<p>Create the data.frame <em>df</em> with <code>df &lt;- as.data.frame(matrix(runif(9e6), 3e3, 3e3))</code> This will create a data.frame with 3000 columns and rows and a total of 9mil values.</p>
+<p>Now compute the sum of any row, then compute the sum of any column. Measure the time for both operations. Why are the times different, although the size is the same?</p>
+<ul>
+<li><strong>Hint1:</strong> The time is measured with the function <code>system.time(my_function_call())</code>, e.g: <code>system.time(mean(my_vector))</code></li>
+<li><strong>Hint2:</strong> The sum can be computed with the sum function <code>sum(my_vector)</code></li>
+<li><strong>Hint2:</strong> Columns and rows are selected by single brackets. Rows: <code>df[row_number,]</code>, Columns: <code>df[,col_number]</code></li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="co"># Answer</span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">runif</span>(<span class="fl">9e6</span>), <span class="fl">3e3</span>, <span class="fl">3e3</span>))</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb68-5" data-line-number="5"><span class="co"># rows</span></a>
+<a class="sourceLine" id="cb68-6" data-line-number="6"><span class="kw">system.time</span>(res &lt;-<span class="st"> </span><span class="kw">sum</span>(df[<span class="dv">1</span>,]))</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##   0.023   0.000   0.023</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">res</a></code></pre></div>
+<pre><code>## [1] 1490.538</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># columngs</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw">system.time</span>(res2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df[,<span class="dv">1</span>]))</a></code></pre></div>
+<pre><code>##    user  system elapsed 
+##       0       0       0</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">res2</a></code></pre></div>
+<pre><code>## [1] 1518.813</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># Look at the structure of the objects over which we are computing the sum</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="co"># Column</span></a>
+<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="kw">str</span>(df[<span class="dv">1</span>,])</a></code></pre></div>
+<pre><code>## 'data.frame':    1 obs. of  3000 variables:
+##  $ V1   : num 0.0845
+##  $ V2   : num 0.938
+##  $ V3   : num 0.437
+##  $ V4   : num 0.685
+##  $ V5   : num 0.329
+##  $ V6   : num 0.088
+##  $ V7   : num 0.367
+##  $ V8   : num 0.913
+##  $ V9   : num 0.618
+##  $ V10  : num 0.35
+##  $ V11  : num 0.42
+##  $ V12  : num 0.2
+##  $ V13  : num 0.841
+##  $ V14  : num 0.883
+##  $ V15  : num 0.51
+##  $ V16  : num 0.232
+##  $ V17  : num 0.71
+##  $ V18  : num 0.0496
+##  $ V19  : num 0.799
+##  $ V20  : num 0.998
+##  $ V21  : num 0.23
+##  $ V22  : num 0.428
+##  $ V23  : num 0.469
+##  $ V24  : num 0.607
+##  $ V25  : num 0.809
+##  $ V26  : num 0.0907
+##  $ V27  : num 0.147
+##  $ V28  : num 0.393
+##  $ V29  : num 0.254
+##  $ V30  : num 0.944
+##  $ V31  : num 0.672
+##  $ V32  : num 0.113
+##  $ V33  : num 0.841
+##  $ V34  : num 0.48
+##  $ V35  : num 0.862
+##  $ V36  : num 0.441
+##  $ V37  : num 0.499
+##  $ V38  : num 0.0138
+##  $ V39  : num 0.316
+##  $ V40  : num 0.346
+##  $ V41  : num 0.336
+##  $ V42  : num 0.253
+##  $ V43  : num 0.486
+##  $ V44  : num 0.0899
+##  $ V45  : num 0.0642
+##  $ V46  : num 0.736
+##  $ V47  : num 0.541
+##  $ V48  : num 0.115
+##  $ V49  : num 0.243
+##  $ V50  : num 0.117
+##  $ V51  : num 0.96
+##  $ V52  : num 0.883
+##  $ V53  : num 0.0313
+##  $ V54  : num 0.0677
+##  $ V55  : num 0.326
+##  $ V56  : num 0.447
+##  $ V57  : num 0.421
+##  $ V58  : num 0.0913
+##  $ V59  : num 0.627
+##  $ V60  : num 0.423
+##  $ V61  : num 0.765
+##  $ V62  : num 0.37
+##  $ V63  : num 0.997
+##  $ V64  : num 0.776
+##  $ V65  : num 0.219
+##  $ V66  : num 0.608
+##  $ V67  : num 0.41
+##  $ V68  : num 0.272
+##  $ V69  : num 0.648
+##  $ V70  : num 0.172
+##  $ V71  : num 0.989
+##  $ V72  : num 0.199
+##  $ V73  : num 0.0972
+##  $ V74  : num 0.213
+##  $ V75  : num 0.535
+##  $ V76  : num 0.171
+##  $ V77  : num 0.754
+##  $ V78  : num 0.776
+##  $ V79  : num 0.3
+##  $ V80  : num 0.208
+##  $ V81  : num 0.775
+##  $ V82  : num 0.332
+##  $ V83  : num 0.88
+##  $ V84  : num 0.795
+##  $ V85  : num 0.466
+##  $ V86  : num 0.808
+##  $ V87  : num 0.171
+##  $ V88  : num 0.866
+##  $ V89  : num 0.626
+##  $ V90  : num 0.484
+##  $ V91  : num 0.554
+##  $ V92  : num 0.37
+##  $ V93  : num 0.31
+##  $ V94  : num 0.222
+##  $ V95  : num 0.217
+##  $ V96  : num 0.236
+##  $ V97  : num 0.685
+##  $ V98  : num 0.986
+##  $ V99  : num 0.111
+##   [list output truncated]</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co"># Row</span></a>
+<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">str</span>(df[,<span class="dv">1</span>])</a></code></pre></div>
+<pre><code>##  num [1:3000] 8.45e-02 3.19e-05 9.78e-02 6.85e-01 3.63e-01 ...</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co"># As we can see the extracted column is a numeric vector. But the extracted</span></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="co"># row is a list. Under the hood the sum function is iterating in C/Fortran</span></a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="co"># over the specific structure. Iterating over a native array of doubles is</span></a>
+<a class="sourceLine" id="cb80-4" data-line-number="4"><span class="co"># faster, than iterating over a structure, where at each position, the value</span></a>
+<a class="sourceLine" id="cb80-5" data-line-number="5"><span class="co"># has to be retrieved from an object possibly strored somewhere further away</span></a>
+<a class="sourceLine" id="cb80-6" data-line-number="6"><span class="co"># in memory.</span></a></code></pre></div>
+</div>
+<div id="missing-values" class="section level2">
+<h2><span class="header-section-number">1.12</span> Missing Values</h2>
+<ul>
+<li>If NA is just a placeholder for a missing value of the same type and Infinity is of type double, why is Infinity plus NA not Infinity?</li>
+</ul>
+<p><strong>Hint:</strong></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">paste</span>(<span class="kw">paste</span>(<span class="kw">rep</span>((<span class="ot">Inf</span> <span class="op">-</span><span class="st"> </span><span class="ot">Inf</span>), <span class="dv">20</span>), <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>), <span class="st">&quot;Batman!&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman!&quot;</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="co"># Answer:</span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="co"># Because infinity is not a well defined number, but a concept with</span></a>
+<a class="sourceLine" id="cb83-3" data-line-number="3"><span class="co"># the type 'double' in R. Adding or subtracting any number from infinity</span></a>
+<a class="sourceLine" id="cb83-4" data-line-number="4"><span class="co"># will give infinity. However NA is placeholder for any value of the same</span></a>
+<a class="sourceLine" id="cb83-5" data-line-number="5"><span class="co"># type and therefore also for infinity. As infinity plus/minus infinity</span></a>
+<a class="sourceLine" id="cb83-6" data-line-number="6"><span class="co"># is not defined, adding NA to infinity can theoretically lead to</span></a>
+<a class="sourceLine" id="cb83-7" data-line-number="7"><span class="co"># Nan (not a number). Therefore Inf + NA will produce NA.</span></a>
+<a class="sourceLine" id="cb83-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb83-9" data-line-number="9"><span class="ot">Inf</span> <span class="op">+</span><span class="st"> </span><span class="ot">NA</span></a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="ot">Inf</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="ot">Inf</span> <span class="op">-</span><span class="st"> </span><span class="ot">Inf</span></a></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
 </div>
 </div>
 
