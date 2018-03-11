@@ -104,7 +104,6 @@ of a logical vector?
 
 
 ```r
-options(width = 110)
 # When we attempt to combine different types they will be coerced to the most flexible type. Types from least
 # to most flexible are: logical, integer, double and character.
 
@@ -314,4 +313,108 @@ my_df
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["A"],"name":[1],"type":["int"],"align":["right"]},{"label":["B"],"name":[2],"type":["int"],"align":["right"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"a"},{"1":"2","2":"2","3":"2","_rn_":"b"},{"1":"3","2":"3","3":"3","_rn_":"c"},{"1":"4","2":"4","3":"4","_rn_":"d"},{"1":"5","2":"5","3":"5","_rn_":"e"},{"1":"6","2":"6","3":"6","_rn_":"f"},{"1":"7","2":"7","3":"7","_rn_":"g"},{"1":"8","2":"8","3":"8","_rn_":"h"},{"1":"9","2":"9","3":"9","_rn_":"i"},{"1":"10","2":"10","3":"10","_rn_":"j"},{"1":"NA","2":"11","3":"11","_rn_":"k"},{"1":"NA","2":"NA","3":"12","_rn_":""}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
+## Attributes
+Take again our `data.frame` from Question 5.
+
+* Change the row names and the column names of the `data.frame` to capital letters (or small letters, if they 
+are already capital.
+* Change the `class` attribute to *list*. What happens?
+* Change it now to any name you like. What happens now? What happens if you remove the class attribute
+
+
+```r
+# Answer
+# A. One possible way through attributes
+
+attributes(my_df)
+```
+
+```
+## $names
+## [1] "A" "B" "C"
+## 
+## $row.names
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "" 
+## 
+## $class
+## [1] "data.frame"
+```
+
+```r
+attr(my_df, "names") <- letters[1:3]
+attr(my_df, "row.names") <- LETTERS[1:12]
+my_df
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["a"],"name":[1],"type":["int"],"align":["right"]},{"label":["b"],"name":[2],"type":["int"],"align":["right"]},{"label":["c"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"A"},{"1":"2","2":"2","3":"2","_rn_":"B"},{"1":"3","2":"3","3":"3","_rn_":"C"},{"1":"4","2":"4","3":"4","_rn_":"D"},{"1":"5","2":"5","3":"5","_rn_":"E"},{"1":"6","2":"6","3":"6","_rn_":"F"},{"1":"7","2":"7","3":"7","_rn_":"G"},{"1":"8","2":"8","3":"8","_rn_":"H"},{"1":"9","2":"9","3":"9","_rn_":"I"},{"1":"10","2":"10","3":"10","_rn_":"J"},{"1":"NA","2":"11","3":"11","_rn_":"K"},{"1":"NA","2":"NA","3":"12","_rn_":"L"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+# Or through accessor functions
+
+names(my_df) <- LETTERS[1:3]
+row.names(my_df) <- letters[1:12]
+my_df
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["A"],"name":[1],"type":["int"],"align":["right"]},{"label":["B"],"name":[2],"type":["int"],"align":["right"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"a"},{"1":"2","2":"2","3":"2","_rn_":"b"},{"1":"3","2":"3","3":"3","_rn_":"c"},{"1":"4","2":"4","3":"4","_rn_":"d"},{"1":"5","2":"5","3":"5","_rn_":"e"},{"1":"6","2":"6","3":"6","_rn_":"f"},{"1":"7","2":"7","3":"7","_rn_":"g"},{"1":"8","2":"8","3":"8","_rn_":"h"},{"1":"9","2":"9","3":"9","_rn_":"i"},{"1":"10","2":"10","3":"10","_rn_":"j"},{"1":"NA","2":"11","3":"11","_rn_":"k"},{"1":"NA","2":"NA","3":"12","_rn_":"l"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+# B. 
+
+attr(my_df, "class") <- "list"
+my_df
+```
+
+```
+## $A
+##  [1]  1  2  3  4  5  6  7  8  9 10 NA NA
+## 
+## $B
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 NA
+## 
+## $C
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+## 
+## attr(,"row.names")
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l"
+## attr(,"class")
+## [1] "list"
+```
+
+```r
+# Answer - the data.frame coerced to a list
+
+# C
+attr(my_df, "class") <- "Batman"
+my_df
+```
+
+```
+## $A
+##  [1]  1  2  3  4  5  6  7  8  9 10 NA NA
+## 
+## $B
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 NA
+## 
+## $C
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+## 
+## attr(,"row.names")
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l"
+## attr(,"class")
+## [1] "Batman"
+```
+
+```r
+# Answer - Nothing changes
+```
 

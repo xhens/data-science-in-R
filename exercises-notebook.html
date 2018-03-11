@@ -1724,6 +1724,7 @@ $(document).ready(function () {
 <li><a href="#atomic-vector-concatenation"><span class="toc-section-number">1.3</span> Atomic Vector Concatenation</a></li>
 <li><a href="#vector-concatenation"><span class="toc-section-number">1.4</span> Vector Concatenation</a></li>
 <li><a href="#from-vectors-to-data.frames"><span class="toc-section-number">1.5</span> From Vectors to <code>data.frames</code></a></li>
+<li><a href="#attributes"><span class="toc-section-number">1.6</span> Attributes</a></li>
 </ul></li>
 </ul>
 </div>
@@ -1774,11 +1775,10 @@ $(document).ready(function () {
 <div id="atomic-vector-concatenation" class="section level2">
 <h2><span class="header-section-number">1.3</span> Atomic Vector Concatenation</h2>
 <p>What happens when you try to generate an atomic vector with <code>c()</code>which is composed of different types of elements? What is the <code>mean()</code> of a logical vector?</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">width =</span> <span class="dv">110</span>)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># When we attempt to combine different types they will be coerced to the most flexible type. Types from least</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co"># to most flexible are: logical, integer, double and character.</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="kw">str</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>)) <span class="co"># 1 corced to char</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># When we attempt to combine different types they will be coerced to the most flexible type. Types from least</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># to most flexible are: logical, integer, double and character.</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="kw">str</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>)) <span class="co"># 1 corced to char</span></a></code></pre></div>
 <pre><code>##  chr [1:2] &quot;a&quot; &quot;1&quot;</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># As TRUE is encoded as 1 and FALSE as 0, the mean is the number of TRUEs devided by the vector length.</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>,<span class="ot">FALSE</span>))</a></code></pre></div>
@@ -1881,6 +1881,81 @@ $(document).ready(function () {
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["A"],"name":[1],"type":["int"],"align":["right"]},{"label":["B"],"name":[2],"type":["int"],"align":["right"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"a"},{"1":"2","2":"2","3":"2","_rn_":"b"},{"1":"3","2":"3","3":"3","_rn_":"c"},{"1":"4","2":"4","3":"4","_rn_":"d"},{"1":"5","2":"5","3":"5","_rn_":"e"},{"1":"6","2":"6","3":"6","_rn_":"f"},{"1":"7","2":"7","3":"7","_rn_":"g"},{"1":"8","2":"8","3":"8","_rn_":"h"},{"1":"9","2":"9","3":"9","_rn_":"i"},{"1":"10","2":"10","3":"10","_rn_":"j"},{"1":"NA","2":"11","3":"11","_rn_":"k"},{"1":"NA","2":"NA","3":"12","_rn_":""}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+</div>
+<div id="attributes" class="section level2">
+<h2><span class="header-section-number">1.6</span> Attributes</h2>
+<p>Take again our <code>data.frame</code> from Question 5.</p>
+<ul>
+<li>Change the row names and the column names of the <code>data.frame</code> to capital letters (or small letters, if they are already capital.</li>
+<li>Change the <code>class</code> attribute to <em>list</em>. What happens?</li>
+<li>Change it now to any name you like. What happens now? What happens if you remove the class attribute</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># Answer</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="co"># A. One possible way through attributes</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="kw">attributes</span>(my_df)</a></code></pre></div>
+<pre><code>## $names
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
+## 
+## $row.names
+##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;&quot; 
+## 
+## $class
+## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">attr</span>(my_df, <span class="st">&quot;names&quot;</span>) &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="kw">attr</span>(my_df, <span class="st">&quot;row.names&quot;</span>) &lt;-<span class="st"> </span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>]</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">my_df</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["a"],"name":[1],"type":["int"],"align":["right"]},{"label":["b"],"name":[2],"type":["int"],"align":["right"]},{"label":["c"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"A"},{"1":"2","2":"2","3":"2","_rn_":"B"},{"1":"3","2":"3","3":"3","_rn_":"C"},{"1":"4","2":"4","3":"4","_rn_":"D"},{"1":"5","2":"5","3":"5","_rn_":"E"},{"1":"6","2":"6","3":"6","_rn_":"F"},{"1":"7","2":"7","3":"7","_rn_":"G"},{"1":"8","2":"8","3":"8","_rn_":"H"},{"1":"9","2":"9","3":"9","_rn_":"I"},{"1":"10","2":"10","3":"10","_rn_":"J"},{"1":"NA","2":"11","3":"11","_rn_":"K"},{"1":"NA","2":"NA","3":"12","_rn_":"L"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co"># Or through accessor functions</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="kw">names</span>(my_df) &lt;-<span class="st"> </span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"><span class="kw">row.names</span>(my_df) &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>]</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">my_df</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["A"],"name":[1],"type":["int"],"align":["right"]},{"label":["B"],"name":[2],"type":["int"],"align":["right"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"a"},{"1":"2","2":"2","3":"2","_rn_":"b"},{"1":"3","2":"3","3":"3","_rn_":"c"},{"1":"4","2":"4","3":"4","_rn_":"d"},{"1":"5","2":"5","3":"5","_rn_":"e"},{"1":"6","2":"6","3":"6","_rn_":"f"},{"1":"7","2":"7","3":"7","_rn_":"g"},{"1":"8","2":"8","3":"8","_rn_":"h"},{"1":"9","2":"9","3":"9","_rn_":"i"},{"1":"10","2":"10","3":"10","_rn_":"j"},{"1":"NA","2":"11","3":"11","_rn_":"k"},{"1":"NA","2":"NA","3":"12","_rn_":"l"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co"># B. </span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw">attr</span>(my_df, <span class="st">&quot;class&quot;</span>) &lt;-<span class="st"> &quot;list&quot;</span></a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">my_df</a></code></pre></div>
+<pre><code>## $A
+##  [1]  1  2  3  4  5  6  7  8  9 10 NA NA
+## 
+## $B
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 NA
+## 
+## $C
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+## 
+## attr(,&quot;row.names&quot;)
+##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot;
+## attr(,&quot;class&quot;)
+## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="co"># Answer - the data.frame coerced to a list</span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="co"># C</span></a>
+<a class="sourceLine" id="cb47-4" data-line-number="4"><span class="kw">attr</span>(my_df, <span class="st">&quot;class&quot;</span>) &lt;-<span class="st"> &quot;Batman&quot;</span></a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">my_df</a></code></pre></div>
+<pre><code>## $A
+##  [1]  1  2  3  4  5  6  7  8  9 10 NA NA
+## 
+## $B
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 NA
+## 
+## $C
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+## 
+## attr(,&quot;row.names&quot;)
+##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot;
+## attr(,&quot;class&quot;)
+## [1] &quot;Batman&quot;</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co"># Answer - Nothing changes</span></a></code></pre></div>
 </div>
 </div>
 

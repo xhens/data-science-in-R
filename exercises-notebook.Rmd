@@ -157,3 +157,40 @@ names(my_df) <- LETTERS[1:3]
 my_df
 ```
 
+## Attributes
+Take again our `data.frame` from Question 5.
+
+* Change the row names and the column names of the `data.frame` to capital letters (or small letters, if they 
+are already capital.
+* Change the `class` attribute to *list*. What happens?
+* Change it now to any name you like. What happens now? What happens if you remove the class attribute
+
+```{r}
+# Answer
+# A. One possible way through attributes
+
+attributes(my_df)
+attr(my_df, "names") <- letters[1:3]
+attr(my_df, "row.names") <- LETTERS[1:12]
+my_df
+
+# Or through accessor functions
+
+names(my_df) <- LETTERS[1:3]
+row.names(my_df) <- letters[1:12]
+my_df
+
+# B. 
+
+attr(my_df, "class") <- "list"
+my_df
+
+# Answer - the data.frame coerced to a list
+
+# C
+attr(my_df, "class") <- "Batman"
+my_df
+
+# Answer - Nothing changes
+```
+
