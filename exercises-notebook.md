@@ -24,7 +24,8 @@ output:
 
 What are the scalar types in R?
 
-```{r}
+
+```r
 # Scalars are just vectors of length one
 ```
 
@@ -38,7 +39,8 @@ In order to check if an object is of a certain type you can use `is.[type](objec
 Can you use the `is.vector()` function to understand whether a data structure is a vector? If
 not, what are the functions that you can use for this purpose?
 
-```{r}
+
+```r
 # Atomic vectors can contain elements of the same type. The elements of a list can have different types.
 
 # Yes, we can use the `is.vector()` function to understand is the structure is a vector. 
@@ -46,16 +48,49 @@ not, what are the functions that you can use for this purpose?
 
 a <- list(c(1,2,3), "bla", TRUE)
 print(a)
-is.vector(a)
+```
 
+```
+## [[1]]
+## [1] 1 2 3
+## 
+## [[2]]
+## [1] "bla"
+## 
+## [[3]]
+## [1] TRUE
+```
+
+```r
+is.vector(a)
+```
+
+```
+## [1] TRUE
+```
+
+```r
 # Best response: If possible you should use type specific coercions like `as.numeric()` or `as.character()`. 
 # But since lists are heterogenous, this might not work. A more general function is `unlist()`, 
 # which returns the list into a vector of the most general type. Notice this difference:
 
 a <- list(c(1,2,3), "bla", TRUE)
 unlist(a)
-as.character(a)
+```
 
+```
+## [1] "1"    "2"    "3"    "bla"  "TRUE"
+```
+
+```r
+as.character(a)
+```
+
+```
+## [1] "c(1, 2, 3)" "bla"        "TRUE"
+```
+
+```r
 # Generally you can, but here comes the weird part: `is.vector()` will only return `TRUE` if the vector has 
 # no attributes `names`. Therefore more specific functions like `is.atomic()` or `is.list()` functions should 
 # be used to test if an object is actually atomic vectoror a list
@@ -67,15 +102,26 @@ as.character(a)
 What happens when you try to generate an atomic vector with `c()`which is composed of different types of elements? What is the `mean()` 
 of a logical vector?
 
-```{r set-options, cache=FALSE}
+
+```r
 options(width = 110)
 # When we attempt to combine different types they will be coerced to the most flexible type. Types from least
 # to most flexible are: logical, integer, double and character.
 
 str(c("a", 1)) # 1 corced to char
+```
 
+```
+##  chr [1:2] "a" "1"
+```
+
+```r
 # As TRUE is encoded as 1 and FALSE as 0, the mean is the number of TRUEs devided by the vector length.
 mean(c(TRUE, FALSE,FALSE))
+```
+
+```
+## [1] 0.3333333
 ```
 
 
@@ -83,17 +129,38 @@ mean(c(TRUE, FALSE,FALSE))
 
 Compare X and Y where X and Y are defined as follows. What is the difference?
 
-```{r}
+
+```r
 x <- list(list(1,2), c(3,4))
 y <- c(list(1,2), c(3,4))
 ```
 
-```{r}
+
+```r
 # Answer
 # X will combine seveal lists into one. Given a combination of atomic vectors and lists, y will coerce the 
 # vectors to lists before combining them.
 str(x)
+```
+
+```
+## List of 2
+##  $ :List of 2
+##   ..$ : num 1
+##   ..$ : num 2
+##  $ : num [1:2] 3 4
+```
+
+```r
 str(y)
+```
+
+```
+## List of 4
+##  $ : num 1
+##  $ : num 2
+##  $ : num 3
+##  $ : num 4
 ```
 
 ## From Vectors to `data.frames`
@@ -119,32 +186,116 @@ What happend to the names?
 Hint: If list elements have no names, we can access them with the double brackets and an
 index, e.g. `my_list[[1]]`
 
-```{r}
+
+```r
 # Answer
 
 # A. create vectors
 aa <- 1:10
 names(aa) <- letters[aa]
 aa
+```
+
+```
+##  a  b  c  d  e  f  g  h  i  j 
+##  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
 bb <- seq(1, 11)
 names(bb) <- letters[bb]
 bb
+```
+
+```
+##  a  b  c  d  e  f  g  h  i  j  k 
+##  1  2  3  4  5  6  7  8  9 10 11
+```
+
+```r
 cc <- seq(1, 12, by=1)
 names(cc) <- letters[cc]
 
 typeof(aa)
-typeof(bb)
-typeof(cc)
+```
 
+```
+## [1] "integer"
+```
+
+```r
+typeof(bb)
+```
+
+```
+## [1] "integer"
+```
+
+```r
+typeof(cc)
+```
+
+```
+## [1] "double"
+```
+
+```r
 # B. Combine all three vectors in a list
  
 my_list <- list(aa, bb, cc)
 my_list
-attributes(aa)
-attributes(bb)
-attributes(cc)
-attributes(my_list)
+```
 
+```
+## [[1]]
+##  a  b  c  d  e  f  g  h  i  j 
+##  1  2  3  4  5  6  7  8  9 10 
+## 
+## [[2]]
+##  a  b  c  d  e  f  g  h  i  j  k 
+##  1  2  3  4  5  6  7  8  9 10 11 
+## 
+## [[3]]
+##  a  b  c  d  e  f  g  h  i  j  k  l 
+##  1  2  3  4  5  6  7  8  9 10 11 12
+```
+
+```r
+attributes(aa)
+```
+
+```
+## $names
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+```
+
+```r
+attributes(bb)
+```
+
+```
+## $names
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k"
+```
+
+```r
+attributes(cc)
+```
+
+```
+## $names
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l"
+```
+
+```r
+attributes(my_list)
+```
+
+```
+## NULL
+```
+
+```r
 # C. Coerce to data.frames
 
 # my_df <- as.data.frame(my_list)# fails
@@ -157,4 +308,10 @@ my_df <- as.data.frame(my_list)
 names(my_df) <- LETTERS[1:3]
 my_df
 ```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["A"],"name":[1],"type":["int"],"align":["right"]},{"label":["B"],"name":[2],"type":["int"],"align":["right"]},{"label":["C"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1","3":"1","_rn_":"a"},{"1":"2","2":"2","3":"2","_rn_":"b"},{"1":"3","2":"3","3":"3","_rn_":"c"},{"1":"4","2":"4","3":"4","_rn_":"d"},{"1":"5","2":"5","3":"5","_rn_":"e"},{"1":"6","2":"6","3":"6","_rn_":"f"},{"1":"7","2":"7","3":"7","_rn_":"g"},{"1":"8","2":"8","3":"8","_rn_":"h"},{"1":"9","2":"9","3":"9","_rn_":"i"},{"1":"10","2":"10","3":"10","_rn_":"j"},{"1":"NA","2":"11","3":"11","_rn_":"k"},{"1":"NA","2":"NA","3":"12","_rn_":""}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
