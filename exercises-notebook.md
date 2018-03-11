@@ -522,3 +522,66 @@ rev(f3)
 ## Levels: z y x w v u t s r q p o n m l k j i h g f e d c b a
 ```
 
+## Creating data.frames
+
+Create a data.frame with 26 rows like this: Only the first and the last six rows are shown.
+Hint: Instead of the workaround with list you can also use simply `data.frame(column_name
+= column_vector, ...)`
+
+
+```r
+aa <- seq(1:26)
+bb <- seq(from=4, to=4*26, by=4)
+cc <- rep(seq(1, 26, 2), each=2)
+df <- data.frame(V1 = aa, V2 = bb, V3 = letters[cc])
+head(df)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V1"],"name":[1],"type":["int"],"align":["right"]},{"label":["V2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["V3"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"1","2":"4","3":"a","_rn_":"1"},{"1":"2","2":"8","3":"a","_rn_":"2"},{"1":"3","2":"12","3":"c","_rn_":"3"},{"1":"4","2":"16","3":"c","_rn_":"4"},{"1":"5","2":"20","3":"e","_rn_":"5"},{"1":"6","2":"24","3":"e","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+tail(df)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V1"],"name":[1],"type":["int"],"align":["right"]},{"label":["V2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["V3"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"21","2":"84","3":"u","_rn_":"21"},{"1":"22","2":"88","3":"u","_rn_":"22"},{"1":"23","2":"92","3":"w","_rn_":"23"},{"1":"24","2":"96","3":"w","_rn_":"24"},{"1":"25","2":"100","3":"y","_rn_":"25"},{"1":"26","2":"104","3":"y","_rn_":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+## Combining `data.frames`
+
+Now take the previous data.frame from Question 10 and reproduce the following `data.frame`.
+Only the first and the last six rows are shown
+**Hint:** In order to combine to data.frames by column you can use `cbind(df1, df2, ...)`
+
+help(cbind)
+
+```r
+df[,1] <- NULL
+dd <- rev(rep(seq(1, 26, 2), each = 2))
+ee <- seq(0, 1.6, length.out = 26)
+df2 <- data.frame(V4 = dd, V5 = ee)
+binded_df <- cbind(df2, df)
+head(binded_df)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V4"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["V5"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["V2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["V3"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"25","2":"0.000","3":"4","4":"a","_rn_":"1"},{"1":"25","2":"0.064","3":"8","4":"a","_rn_":"2"},{"1":"23","2":"0.128","3":"12","4":"c","_rn_":"3"},{"1":"23","2":"0.192","3":"16","4":"c","_rn_":"4"},{"1":"21","2":"0.256","3":"20","4":"e","_rn_":"5"},{"1":"21","2":"0.320","3":"24","4":"e","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+tail(binded_df)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V4"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["V5"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["V2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["V3"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"5","2":"1.280","3":"84","4":"u","_rn_":"21"},{"1":"5","2":"1.344","3":"88","4":"u","_rn_":"22"},{"1":"3","2":"1.408","3":"92","4":"w","_rn_":"23"},{"1":"3","2":"1.472","3":"96","4":"w","_rn_":"24"},{"1":"1","2":"1.536","3":"100","4":"y","_rn_":"25"},{"1":"1","2":"1.600","3":"104","4":"y","_rn_":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>

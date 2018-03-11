@@ -252,3 +252,34 @@ rev(f3)
 
 ```
 
+## Creating data.frames
+
+Create a data.frame with 26 rows like this: Only the first and the last six rows are shown.
+Hint: Instead of the workaround with list you can also use simply `data.frame(column_name
+= column_vector, ...)`
+
+```{r}
+aa <- seq(1:26)
+bb <- seq(from=4, to=4*26, by=4)
+cc <- rep(seq(1, 26, 2), each=2)
+df <- data.frame(V1 = aa, V2 = bb, V3 = letters[cc])
+head(df)
+tail(df)
+```
+
+## Combining `data.frames`
+
+Now take the previous data.frame from Question 10 and reproduce the following `data.frame`.
+Only the first and the last six rows are shown
+**Hint:** In order to combine to data.frames by column you can use `cbind(df1, df2, ...)`
+
+help(cbind)
+```{r}
+df[,1] <- NULL
+dd <- rev(rep(seq(1, 26, 2), each = 2))
+ee <- seq(0, 1.6, length.out = 26)
+df2 <- data.frame(V4 = dd, V5 = ee)
+binded_df <- cbind(df2, df)
+head(binded_df)
+tail(binded_df)
+```
