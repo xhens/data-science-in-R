@@ -1,10 +1,6 @@
 ---
 title: "Data Analytics and Visualizations in R - Exercises"
 output:
-  pdf_document:
-    toc: true
-    toc_depth: 4
-    number_sections: true
   html_document:
     df_print: paged
     toc: true
@@ -14,6 +10,10 @@ output:
     highlight: tango
     code_folding: show
     keep_md: true
+  pdf_document:
+    toc: true
+    toc_depth: 4
+    number_sections: true
 ---
 
 # Basic R Data Structures
@@ -352,5 +352,21 @@ paste(paste(rep((Inf - Inf), 20), collapse = ""), "Batman!")
 Inf + NA
 Inf + 1
 Inf - Inf
+```
+
+---
+
+# Advanced R Data Structures and Mathematical Operations
+
+## Basic data structures
+
+How would you create a 3 by 4 matrix that contains the numbers 1 to 12 and then convert it into a data frame?
+
+```{r}
+# Answer
+
+x <- matrix(1:12, 3,4)
+x <- as.data.frame(x)
+x
 ```
 

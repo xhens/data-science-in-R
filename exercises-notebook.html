@@ -1732,6 +1732,9 @@ $(document).ready(function () {
 <li><a href="#computation-on-data.frames"><span class="toc-section-number">1.11</span> Computation on data.frames</a></li>
 <li><a href="#missing-values"><span class="toc-section-number">1.12</span> Missing Values</a></li>
 </ul></li>
+<li><a href="#advanced-r-data-structures-and-mathematical-operations"><span class="toc-section-number">2</span> Advanced R Data Structures and Mathematical Operations</a><ul>
+<li><a href="#basic-data-structures"><span class="toc-section-number">2.1</span> Basic data structures</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -2088,122 +2091,122 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb68-5" data-line-number="5"><span class="co"># rows</span></a>
 <a class="sourceLine" id="cb68-6" data-line-number="6"><span class="kw">system.time</span>(res &lt;-<span class="st"> </span><span class="kw">sum</span>(df[<span class="dv">1</span>,]))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.023   0.000   0.023</code></pre>
+##   0.025   0.000   0.024</code></pre>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">res</a></code></pre></div>
-<pre><code>## [1] 1490.538</code></pre>
+<pre><code>## [1] 1509.453</code></pre>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># columngs</span></a>
 <a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw">system.time</span>(res2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df[,<span class="dv">1</span>]))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
 ##       0       0       0</code></pre>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">res2</a></code></pre></div>
-<pre><code>## [1] 1518.813</code></pre>
+<pre><code>## [1] 1487.859</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># Look at the structure of the objects over which we are computing the sum</span></a>
 <a class="sourceLine" id="cb76-2" data-line-number="2"><span class="co"># Column</span></a>
 <a class="sourceLine" id="cb76-3" data-line-number="3"><span class="kw">str</span>(df[<span class="dv">1</span>,])</a></code></pre></div>
 <pre><code>## 'data.frame':    1 obs. of  3000 variables:
-##  $ V1   : num 0.0845
-##  $ V2   : num 0.938
-##  $ V3   : num 0.437
-##  $ V4   : num 0.685
-##  $ V5   : num 0.329
-##  $ V6   : num 0.088
-##  $ V7   : num 0.367
-##  $ V8   : num 0.913
-##  $ V9   : num 0.618
-##  $ V10  : num 0.35
-##  $ V11  : num 0.42
-##  $ V12  : num 0.2
-##  $ V13  : num 0.841
-##  $ V14  : num 0.883
-##  $ V15  : num 0.51
-##  $ V16  : num 0.232
-##  $ V17  : num 0.71
-##  $ V18  : num 0.0496
-##  $ V19  : num 0.799
-##  $ V20  : num 0.998
-##  $ V21  : num 0.23
-##  $ V22  : num 0.428
-##  $ V23  : num 0.469
-##  $ V24  : num 0.607
-##  $ V25  : num 0.809
-##  $ V26  : num 0.0907
-##  $ V27  : num 0.147
-##  $ V28  : num 0.393
-##  $ V29  : num 0.254
-##  $ V30  : num 0.944
-##  $ V31  : num 0.672
-##  $ V32  : num 0.113
-##  $ V33  : num 0.841
-##  $ V34  : num 0.48
-##  $ V35  : num 0.862
-##  $ V36  : num 0.441
-##  $ V37  : num 0.499
-##  $ V38  : num 0.0138
-##  $ V39  : num 0.316
-##  $ V40  : num 0.346
-##  $ V41  : num 0.336
-##  $ V42  : num 0.253
-##  $ V43  : num 0.486
-##  $ V44  : num 0.0899
-##  $ V45  : num 0.0642
-##  $ V46  : num 0.736
-##  $ V47  : num 0.541
-##  $ V48  : num 0.115
-##  $ V49  : num 0.243
-##  $ V50  : num 0.117
-##  $ V51  : num 0.96
-##  $ V52  : num 0.883
-##  $ V53  : num 0.0313
-##  $ V54  : num 0.0677
-##  $ V55  : num 0.326
-##  $ V56  : num 0.447
-##  $ V57  : num 0.421
-##  $ V58  : num 0.0913
-##  $ V59  : num 0.627
-##  $ V60  : num 0.423
-##  $ V61  : num 0.765
-##  $ V62  : num 0.37
-##  $ V63  : num 0.997
-##  $ V64  : num 0.776
-##  $ V65  : num 0.219
-##  $ V66  : num 0.608
-##  $ V67  : num 0.41
-##  $ V68  : num 0.272
-##  $ V69  : num 0.648
-##  $ V70  : num 0.172
-##  $ V71  : num 0.989
-##  $ V72  : num 0.199
-##  $ V73  : num 0.0972
-##  $ V74  : num 0.213
-##  $ V75  : num 0.535
-##  $ V76  : num 0.171
-##  $ V77  : num 0.754
-##  $ V78  : num 0.776
-##  $ V79  : num 0.3
-##  $ V80  : num 0.208
-##  $ V81  : num 0.775
-##  $ V82  : num 0.332
-##  $ V83  : num 0.88
-##  $ V84  : num 0.795
-##  $ V85  : num 0.466
-##  $ V86  : num 0.808
-##  $ V87  : num 0.171
-##  $ V88  : num 0.866
-##  $ V89  : num 0.626
-##  $ V90  : num 0.484
-##  $ V91  : num 0.554
-##  $ V92  : num 0.37
-##  $ V93  : num 0.31
-##  $ V94  : num 0.222
-##  $ V95  : num 0.217
-##  $ V96  : num 0.236
-##  $ V97  : num 0.685
-##  $ V98  : num 0.986
-##  $ V99  : num 0.111
+##  $ V1   : num 0.209
+##  $ V2   : num 0.278
+##  $ V3   : num 0.17
+##  $ V4   : num 0.072
+##  $ V5   : num 0.222
+##  $ V6   : num 0.474
+##  $ V7   : num 0.185
+##  $ V8   : num 0.408
+##  $ V9   : num 0.00649
+##  $ V10  : num 0.509
+##  $ V11  : num 0.481
+##  $ V12  : num 0.853
+##  $ V13  : num 0.645
+##  $ V14  : num 0.052
+##  $ V15  : num 0.224
+##  $ V16  : num 0.437
+##  $ V17  : num 0.328
+##  $ V18  : num 0.0288
+##  $ V19  : num 0.715
+##  $ V20  : num 0.818
+##  $ V21  : num 0.425
+##  $ V22  : num 0.746
+##  $ V23  : num 0.879
+##  $ V24  : num 0.696
+##  $ V25  : num 0.558
+##  $ V26  : num 0.282
+##  $ V27  : num 0.00155
+##  $ V28  : num 0.975
+##  $ V29  : num 0.23
+##  $ V30  : num 0.867
+##  $ V31  : num 0.66
+##  $ V32  : num 0.479
+##  $ V33  : num 0.749
+##  $ V34  : num 0.929
+##  $ V35  : num 0.0886
+##  $ V36  : num 0.0555
+##  $ V37  : num 0.42
+##  $ V38  : num 0.982
+##  $ V39  : num 0.0445
+##  $ V40  : num 0.892
+##  $ V41  : num 0.217
+##  $ V42  : num 0.189
+##  $ V43  : num 0.294
+##  $ V44  : num 0.749
+##  $ V45  : num 0.887
+##  $ V46  : num 0.899
+##  $ V47  : num 0.797
+##  $ V48  : num 0.668
+##  $ V49  : num 0.68
+##  $ V50  : num 0.946
+##  $ V51  : num 0.747
+##  $ V52  : num 0.309
+##  $ V53  : num 0.337
+##  $ V54  : num 0.0362
+##  $ V55  : num 0.753
+##  $ V56  : num 0.951
+##  $ V57  : num 0.679
+##  $ V58  : num 0.377
+##  $ V59  : num 0.411
+##  $ V60  : num 0.0655
+##  $ V61  : num 0.161
+##  $ V62  : num 0.974
+##  $ V63  : num 0.424
+##  $ V64  : num 0.131
+##  $ V65  : num 0.771
+##  $ V66  : num 0.865
+##  $ V67  : num 0.107
+##  $ V68  : num 0.383
+##  $ V69  : num 0.611
+##  $ V70  : num 0.749
+##  $ V71  : num 0.365
+##  $ V72  : num 0.833
+##  $ V73  : num 0.134
+##  $ V74  : num 0.757
+##  $ V75  : num 0.0162
+##  $ V76  : num 0.0352
+##  $ V77  : num 0.382
+##  $ V78  : num 0.149
+##  $ V79  : num 0.814
+##  $ V80  : num 0.617
+##  $ V81  : num 0.955
+##  $ V82  : num 0.386
+##  $ V83  : num 0.896
+##  $ V84  : num 0.963
+##  $ V85  : num 0.571
+##  $ V86  : num 0.206
+##  $ V87  : num 0.0759
+##  $ V88  : num 0.438
+##  $ V89  : num 0.637
+##  $ V90  : num 0.518
+##  $ V91  : num 0.588
+##  $ V92  : num 0.282
+##  $ V93  : num 0.242
+##  $ V94  : num 0.467
+##  $ V95  : num 0.609
+##  $ V96  : num 0.503
+##  $ V97  : num 0.429
+##  $ V98  : num 0.334
+##  $ V99  : num 0.0378
 ##   [list output truncated]</code></pre>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co"># Row</span></a>
 <a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">str</span>(df[,<span class="dv">1</span>])</a></code></pre></div>
-<pre><code>##  num [1:3000] 8.45e-02 3.19e-05 9.78e-02 6.85e-01 3.63e-01 ...</code></pre>
+<pre><code>##  num [1:3000] 0.209 0.143 0.982 0.221 0.264 ...</code></pre>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co"># As we can see the extracted column is a numeric vector. But the extracted</span></a>
 <a class="sourceLine" id="cb80-2" data-line-number="2"><span class="co"># row is a list. Under the hood the sum function is iterating in C/Fortran</span></a>
 <a class="sourceLine" id="cb80-3" data-line-number="3"><span class="co"># over the specific structure. Iterating over a native array of doubles is</span></a>
@@ -2233,6 +2236,24 @@ $(document).ready(function () {
 <pre><code>## [1] Inf</code></pre>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="ot">Inf</span> <span class="op">-</span><span class="st"> </span><span class="ot">Inf</span></a></code></pre></div>
 <pre><code>## [1] NaN</code></pre>
+<hr />
+</div>
+</div>
+<div id="advanced-r-data-structures-and-mathematical-operations" class="section level1">
+<h1><span class="header-section-number">2</span> Advanced R Data Structures and Mathematical Operations</h1>
+<div id="basic-data-structures" class="section level2">
+<h2><span class="header-section-number">2.1</span> Basic data structures</h2>
+<p>How would you create a 3 by 4 matrix that contains the numbers 1 to 12 and then convert it into a data frame?</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># Answer</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb89-3" data-line-number="3">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">3</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb89-4" data-line-number="4">x &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(x)</a>
+<a class="sourceLine" id="cb89-5" data-line-number="5">x</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["V1"],"name":[1],"type":["int"],"align":["right"]},{"label":["V2"],"name":[2],"type":["int"],"align":["right"]},{"label":["V3"],"name":[3],"type":["int"],"align":["right"]},{"label":["V4"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10"},{"1":"2","2":"5","3":"8","4":"11"},{"1":"3","2":"6","3":"9","4":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 
