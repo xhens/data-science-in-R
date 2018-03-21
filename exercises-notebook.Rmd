@@ -1,6 +1,10 @@
 ---
 title: "Data Analytics and Visualizations in R - Exercises"
 output:
+  pdf_document:
+    toc: true
+    toc_depth: 4
+    number_sections: true
   html_document:
     df_print: paged
     toc: true
@@ -10,10 +14,6 @@ output:
     highlight: tango
     code_folding: show
     keep_md: true
-  pdf_document:
-    toc: true
-    toc_depth: 4
-    number_sections: true
 ---
 
 # Basic R Data Structures
@@ -370,3 +370,257 @@ x <- as.data.frame(x)
 x
 ```
 
+## 
+Please use the data frame you created in the first question for the next 5 questions. 
+How would you select the second row elements at second and fourth column ?
+
+```{r}
+x <- data.frame(matrix(1:12, 3, 4))
+x[2, c(2,4)]
+```
+
+##
+How would you assign zero to the elements at row 2 which are greater than 4?
+
+```{r}
+x <- data.frame(matrix(1:12, 3, 4))
+x[2, x[2,]>4] <- 0
+x
+```
+
+##
+How do you set the rownames to “row1”, “row2”, “row3” and column names to “col1”, “col2”, “col3” and “col4” ?
+(hint:use function “paste0”)
+
+```{r}
+x <- data.frame(matrix(1:12, 3, 4))
+rownames(x) <- paste0("row", 1:3)
+colnames(x) <- paste0("col", 1:4)
+x
+```
+
+##
+How do you assign 0 to all elements in columns “col3” and “col4” by using paste0 function ?
+
+```{r}
+x <- data.frame(matrix(1:12, 3, 4))
+colnames(x) <- paste0("col", 1:4)
+x[, paste0(0, 3:4)] <- 0
+x
+```
+
+## `lapply()`
+How do you get the numbers whose mod 2 is 0
+
+* by using lapply() function 
+* by subsetting the data frame directly?
+
+```{r}
+x <- data.frame(matrix(1:12), 3, 4)
+
+lapply(x, function(a) a[(a %% 2) == 0])
+
+x[x %% 2 == 0]
+```
+
+##
+Considering `x <- c(“a”=1, “b”=2, “c”=3, “d”=4, “e”=5)`, show how to select the third and fifth elements of x by using
+positive integers, negative integers, a logical vector, and a character vector.
+
+```{r}
+x <- c("a"=1, "b"=2, "c"=3, "d"=4, "e"=5)
+x[c(3,5)]
+x[-c(1,2,4)]
+x[c(F,F,T,F,T)]
+x[c("c", "e")]
+```
+
+##
+Why are `vals[c(2, 5)]` and `vals[2, 5]` different where `vals <- outer(1:5, 1:5, FUN = “/”)`? How would you select fifth and
+nineth elements of vals by the use of a matrix?
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "/")
+
+# Because when you subset matrix with a vector, the 2d matrix behaves
+# like a vector and vals[c(2, 5)] returns the elements at indices 2
+# and 5 in column-major order. vals[2, 5] returns the element at row 2, column 5.
+
+select <- matrix(ncol=2, byrow=TRUE, c(5,1,4,2))
+
+vals[select]
+```
+
+
+##
+Consider df <- data.frame(a=paste(“Point_”, 1:20), b=rep(1:4, each = 2, len = 20), c= seq(1,40,length.out = 20),
+stringsAsFactors = F). Assign “Point_undefined” to column a of all rows of df where column b > 1 and column c > 21 ?
+What is the reason of the different result that you get if you do the same operation with df being created with option
+stringsAsFactors = T ?
+
+##
+Assume x <- matrix(1:20, ncol=2). What is the difference between x[1, , drop = T] and x[1, , drop = F]? Now let y <-
+as.data.frame(x). What is the difference between y[,1] , y[[1]] and y[1]
+
+##
+What is the difference between x[“b”] <- list(NULL) and x[“b”] <- NULL where x <- list(a = c(1:5), b = c(12:15))?
+
+## 
+Assume you have a lookup table as lookup <- c(a = “sun”, b = “rain”, c=“wind”, u = NA). How would you generate
+the weekly weather predictions c(“sun”,“sun”,“rain”, NA, “rain”, “rain”, “wind”) out of this lookup table?
+
+##
+Now assume the weather in winter lookup table is a data frame as below and we have the predictions for the next week as
+stored in weeklyCast. How would you create “weeklyTable” by the use of rownames function? How would you create it by
+the use of match function? How would you order the rows of lookup table by desc column?
+
+##
+Consider the bigDF data frame which has 1500 columns and rows. How would you select the even numbered columns
+named such as “Column_2”, “Column_4”, etc.? How would you select all the columns other than column 76? How
+would you assign 1 to 500 randomly selected diagonal indices? How can you retrieve the row and column indices of the
+elements which has been assigned 1? How would you select rows where columns Column_1 or Column_2 are 1 by using
+the subset() function?
+
+##
+Assume x <- 1:20 %% 2 == 0 and y <- 1:20 %% 5 == 0 . What are the indices of the elements that are True for both
+x and y? What are the indices of the elements that are True for either x or y, or both?
+
+# Data Import
+
+## Flat File - Q1
+
+A csv file has numbers as column names in the first row, i.e. IDs to randomize persons. Which
+parameter of read.table() needs to be adjusted to read the column names as they are in the
+csv?
+
+```{r}
+tmp_tidy_table <- "1_colname, 2_colname, 3_colname
+3,4,5
+a,b,c"
+tmp_tidy_table
+read.csv(text=tmp_tidy_table)
+
+# Parameter `check.names`: a logical, tests for synatactically valid varaible 
+# names
+
+tidy_text_df <- read.csv(text=tmp_tidy_table, check.names = FALSE)
+tidy_text_df
+```
+
+
+## Flat File - Q2
+
+How to read the following table to have the `identical()` information as in `tidy_txt_df` from
+question above?
+
+```{r}
+tmp_messy_table <- "# This line is just useless info
+
+1_colname,2_colname,3_colname
+3,4,5
+
+a,b,c"
+```
+
+```{r}
+# To have the identical information as in the previous table we have to check
+# which lines are comments. We can do this with `comment.char` parameter.
+
+messy_text_df <- read.csv(text = tmp_messy_table, comment.char = '#', check.names = F)
+identical(messy_text_df, tidy_text_df)
+```
+
+## Flat File - Q3
+
+Read the `hollywood.tsv` (not *.csv) file into a `data.table` R object. What is the problem with
+`fread()`?
+
+```{r}
+library(data.table)
+file_holly_tab <- "extdata/hollywood.tsv"
+holly <- as.data.table(read.delim(file_holly_tab), keep_row_names=T)
+head(holly)
+class(holly)
+
+holly_data_table <- fread(file_holly_tab, skip=1)
+class(holly_data_table)
+head(holly_data_table)
+holly_cn <- c("ID", colnames(read.delim(file_holly_tab, nrows= 1)))
+holly_cn
+
+# setnames(holly, holly_cn)
+# head(holly)
+# Difference between them: We can keep row_names. data.frame has no row_names.
+
+```
+
+
+## Flat File - Q4
+
+Who was the oldest surviving passenger of the titanic accident (titanic.csv)? Tipp: `?subset`
+
+```{r}
+tit_df <- read.csv("extdata/titanic.csv")
+head(tit_df)
+
+survivor_name <- subset(tit_df, survived==1 & age==max(age, na.rm = T), name)
+survivor_age <- subset(tit_df, survived==1 & age==max(age, na.rm = T), age)
+
+survivor_name
+survivor_age
+```
+
+
+## Excel Questions - Q1
+
+Read only Name, Type and Total columns for only the first 10 pokemons of the pokemon.xlsx
+file.
+
+## Excel Question - Q2
+
+Which athlete won most bronze medals?
+
+## Excel Question - Q3
+
+Are the columns Gender and Event_gender consistent?
+
+## Excel Question - Q4
+
+Which country won most medals? Which country has the highest ratio of silver medals? Use
+the data in the country summary sheet starting at row 147.
+
+## Excel Questions
+
+Which countries did participate, but without winning medals?
+
+## XML - Q1
+
+Load the XML document plant_catalog.xml. Use XPath and DOM functions to find out all
+unique element names in the document.
+
+Get all plants of zone 4 and transform the data into an R list.
+
+## XML - Q2
+
+Read the tables HTML tables from the TUM website of dates for the winter term
+https://www.tum.de/en/studies/application-and-acceptance/dates-and-deadlines/
+dates-and-deadlines-17/ into your workspace.
+When are the Christmas holidays?
+
+## JSON - Q1
+
+Read the countries.json file. Which countries have common border with Jordan? Which
+country has the most neighbors?
+
+## JSON - Q2
+
+Read this JSON file about projects funded by the world bank: world_bank.json.zip. Be aware,
+you might need to add syntax elements like “[” and “,” to convert the file into textbook
+JSON format, i.e. readable by R. What was the most expensive project?
+
+## SQL - Q1
+
+Use the extdata/Northwind.sl3 SQLite data base and retrieve a table that lists for all
+customers (name of the company, name of the contact person and city) all the products
+(name of the product) that they ordered. How many rows does this table have? Display the
+first 5 rows.

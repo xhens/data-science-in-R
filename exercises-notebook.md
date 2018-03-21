@@ -616,7 +616,7 @@ system.time(res <- sum(df[1,]))
 
 ```
 ##    user  system elapsed 
-##   0.025   0.000   0.024
+##   0.024   0.000   0.025
 ```
 
 ```r
@@ -624,7 +624,7 @@ res
 ```
 
 ```
-## [1] 1509.453
+## [1] 1479.991
 ```
 
 ```r
@@ -642,7 +642,7 @@ res2
 ```
 
 ```
-## [1] 1487.859
+## [1] 1523.028
 ```
 
 ```r
@@ -653,105 +653,105 @@ str(df[1,])
 
 ```
 ## 'data.frame':	1 obs. of  3000 variables:
-##  $ V1   : num 0.209
-##  $ V2   : num 0.278
-##  $ V3   : num 0.17
-##  $ V4   : num 0.072
-##  $ V5   : num 0.222
-##  $ V6   : num 0.474
-##  $ V7   : num 0.185
-##  $ V8   : num 0.408
-##  $ V9   : num 0.00649
-##  $ V10  : num 0.509
-##  $ V11  : num 0.481
-##  $ V12  : num 0.853
-##  $ V13  : num 0.645
-##  $ V14  : num 0.052
-##  $ V15  : num 0.224
-##  $ V16  : num 0.437
-##  $ V17  : num 0.328
-##  $ V18  : num 0.0288
-##  $ V19  : num 0.715
-##  $ V20  : num 0.818
-##  $ V21  : num 0.425
-##  $ V22  : num 0.746
-##  $ V23  : num 0.879
-##  $ V24  : num 0.696
-##  $ V25  : num 0.558
-##  $ V26  : num 0.282
-##  $ V27  : num 0.00155
-##  $ V28  : num 0.975
-##  $ V29  : num 0.23
-##  $ V30  : num 0.867
-##  $ V31  : num 0.66
-##  $ V32  : num 0.479
-##  $ V33  : num 0.749
-##  $ V34  : num 0.929
-##  $ V35  : num 0.0886
-##  $ V36  : num 0.0555
-##  $ V37  : num 0.42
-##  $ V38  : num 0.982
-##  $ V39  : num 0.0445
-##  $ V40  : num 0.892
-##  $ V41  : num 0.217
-##  $ V42  : num 0.189
-##  $ V43  : num 0.294
-##  $ V44  : num 0.749
-##  $ V45  : num 0.887
-##  $ V46  : num 0.899
-##  $ V47  : num 0.797
-##  $ V48  : num 0.668
-##  $ V49  : num 0.68
-##  $ V50  : num 0.946
-##  $ V51  : num 0.747
-##  $ V52  : num 0.309
-##  $ V53  : num 0.337
-##  $ V54  : num 0.0362
-##  $ V55  : num 0.753
-##  $ V56  : num 0.951
-##  $ V57  : num 0.679
-##  $ V58  : num 0.377
-##  $ V59  : num 0.411
-##  $ V60  : num 0.0655
-##  $ V61  : num 0.161
-##  $ V62  : num 0.974
-##  $ V63  : num 0.424
-##  $ V64  : num 0.131
-##  $ V65  : num 0.771
-##  $ V66  : num 0.865
-##  $ V67  : num 0.107
-##  $ V68  : num 0.383
-##  $ V69  : num 0.611
-##  $ V70  : num 0.749
-##  $ V71  : num 0.365
-##  $ V72  : num 0.833
-##  $ V73  : num 0.134
-##  $ V74  : num 0.757
-##  $ V75  : num 0.0162
-##  $ V76  : num 0.0352
-##  $ V77  : num 0.382
-##  $ V78  : num 0.149
-##  $ V79  : num 0.814
-##  $ V80  : num 0.617
-##  $ V81  : num 0.955
-##  $ V82  : num 0.386
-##  $ V83  : num 0.896
-##  $ V84  : num 0.963
-##  $ V85  : num 0.571
-##  $ V86  : num 0.206
-##  $ V87  : num 0.0759
-##  $ V88  : num 0.438
-##  $ V89  : num 0.637
-##  $ V90  : num 0.518
-##  $ V91  : num 0.588
-##  $ V92  : num 0.282
-##  $ V93  : num 0.242
-##  $ V94  : num 0.467
-##  $ V95  : num 0.609
-##  $ V96  : num 0.503
-##  $ V97  : num 0.429
-##  $ V98  : num 0.334
-##  $ V99  : num 0.0378
+##  $ V1   : num 0.475
+##  $ V2   : num 0.862
+##  $ V3   : num 0.297
+##  $ V4   : num 0.412
+##  $ V5   : num 0.643
+##  $ V6   : num 0.906
+##  $ V7   : num 0.558
+##  $ V8   : num 0.422
+##  $ V9   : num 0.992
+##  $ V10  : num 0.861
+##  $ V11  : num 0.305
+##  $ V12  : num 0.455
+##  $ V13  : num 0.749
+##  $ V14  : num 0.364
+##  $ V15  : num 0.325
+##  $ V16  : num 0.653
+##  $ V17  : num 0.827
+##  $ V18  : num 0.218
+##  $ V19  : num 0.0861
+##  $ V20  : num 0.0243
+##  $ V21  : num 0.469
+##  $ V22  : num 0.0678
+##  $ V23  : num 0.185
+##  $ V24  : num 0.357
+##  $ V25  : num 0.0248
+##  $ V26  : num 0.164
+##  $ V27  : num 0.979
+##  $ V28  : num 0.345
+##  $ V29  : num 0.652
+##  $ V30  : num 0.698
+##  $ V31  : num 0.167
+##  $ V32  : num 0.26
+##  $ V33  : num 0.813
+##  $ V34  : num 0.354
+##  $ V35  : num 0.155
+##  $ V36  : num 0.435
+##  $ V37  : num 0.132
+##  $ V38  : num 0.515
+##  $ V39  : num 0.515
+##  $ V40  : num 0.607
+##  $ V41  : num 0.285
+##  $ V42  : num 0.075
+##  $ V43  : num 0.617
+##  $ V44  : num 0.592
+##  $ V45  : num 0.888
+##  $ V46  : num 0.261
+##  $ V47  : num 0.85
+##  $ V48  : num 0.948
+##  $ V49  : num 0.632
+##  $ V50  : num 0.644
+##  $ V51  : num 0.712
+##  $ V52  : num 0.201
+##  $ V53  : num 0.57
+##  $ V54  : num 0.147
+##  $ V55  : num 0.551
+##  $ V56  : num 0.173
+##  $ V57  : num 0.127
+##  $ V58  : num 0.816
+##  $ V59  : num 0.656
+##  $ V60  : num 0.991
+##  $ V61  : num 0.671
+##  $ V62  : num 0.292
+##  $ V63  : num 0.214
+##  $ V64  : num 0.961
+##  $ V65  : num 0.37
+##  $ V66  : num 0.718
+##  $ V67  : num 0.521
+##  $ V68  : num 0.673
+##  $ V69  : num 0.457
+##  $ V70  : num 0.0437
+##  $ V71  : num 0.175
+##  $ V72  : num 0.379
+##  $ V73  : num 0.23
+##  $ V74  : num 0.17
+##  $ V75  : num 0.324
+##  $ V76  : num 0.548
+##  $ V77  : num 0.232
+##  $ V78  : num 0.476
+##  $ V79  : num 0.67
+##  $ V80  : num 0.021
+##  $ V81  : num 0.13
+##  $ V82  : num 0.0592
+##  $ V83  : num 0.629
+##  $ V84  : num 0.104
+##  $ V85  : num 0.722
+##  $ V86  : num 0.992
+##  $ V87  : num 0.526
+##  $ V88  : num 0.548
+##  $ V89  : num 0.886
+##  $ V90  : num 0.991
+##  $ V91  : num 0.108
+##  $ V92  : num 0.643
+##  $ V93  : num 0.465
+##  $ V94  : num 0.201
+##  $ V95  : num 0.857
+##  $ V96  : num 0.65
+##  $ V97  : num 0.235
+##  $ V98  : num 0.715
+##  $ V99  : num 0.6
 ##   [list output truncated]
 ```
 
@@ -761,7 +761,7 @@ str(df[,1])
 ```
 
 ```
-##  num [1:3000] 0.209 0.143 0.982 0.221 0.264 ...
+##  num [1:3000] 0.4753 0.5895 0.8259 0.0129 0.2775 ...
 ```
 
 ```r
@@ -844,3 +844,429 @@ x
   </script>
 </div>
 
+## 
+Please use the data frame you created in the first question for the next 5 questions. 
+How would you select the second row elements at second and fourth column ?
+
+
+```r
+x <- data.frame(matrix(1:12, 3, 4))
+x[2, c(2,4)]
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["X2"],"name":[1],"type":["int"],"align":["right"]},{"label":["X4"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"5","2":"11","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+##
+How would you assign zero to the elements at row 2 which are greater than 4?
+
+
+```r
+x <- data.frame(matrix(1:12, 3, 4))
+x[2, x[2,]>4] <- 0
+x
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["X1"],"name":[1],"type":["int"],"align":["right"]},{"label":["X2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["X3"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["X4"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10"},{"1":"2","2":"0","3":"0","4":"0"},{"1":"3","2":"6","3":"9","4":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+##
+How do you set the rownames to “row1”, “row2”, “row3” and column names to “col1”, “col2”, “col3” and “col4” ?
+(hint:use function “paste0”)
+
+
+```r
+x <- data.frame(matrix(1:12, 3, 4))
+rownames(x) <- paste0("row", 1:3)
+colnames(x) <- paste0("col", 1:4)
+x
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["col1"],"name":[1],"type":["int"],"align":["right"]},{"label":["col2"],"name":[2],"type":["int"],"align":["right"]},{"label":["col3"],"name":[3],"type":["int"],"align":["right"]},{"label":["col4"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10","_rn_":"row1"},{"1":"2","2":"5","3":"8","4":"11","_rn_":"row2"},{"1":"3","2":"6","3":"9","4":"12","_rn_":"row3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+##
+How do you assign 0 to all elements in columns “col3” and “col4” by using paste0 function ?
+
+
+```r
+x <- data.frame(matrix(1:12, 3, 4))
+colnames(x) <- paste0("col", 1:4)
+x[, paste0(0, 3:4)] <- 0
+x
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["col1"],"name":[1],"type":["int"],"align":["right"]},{"label":["col2"],"name":[2],"type":["int"],"align":["right"]},{"label":["col3"],"name":[3],"type":["int"],"align":["right"]},{"label":["col4"],"name":[4],"type":["int"],"align":["right"]},{"label":["03"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["04"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10","5":"0","6":"0"},{"1":"2","2":"5","3":"8","4":"11","5":"0","6":"0"},{"1":"3","2":"6","3":"9","4":"12","5":"0","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+## `lapply()`
+How do you get the numbers whose mod 2 is 0
+
+* by using lapply() function 
+* by subsetting the data frame directly?
+
+
+```r
+x <- data.frame(matrix(1:12), 3, 4)
+
+lapply(x, function(a) a[(a %% 2) == 0])
+```
+
+```
+## $matrix.1.12.
+## [1]  2  4  6  8 10 12
+## 
+## $X3
+## numeric(0)
+## 
+## $X4
+##  [1] 4 4 4 4 4 4 4 4 4 4 4 4
+```
+
+```r
+x[x %% 2 == 0]
+```
+
+```
+##  [1]  2  4  6  8 10 12  4  4  4  4  4  4  4  4  4  4  4  4
+```
+
+##
+Considering `x <- c(“a”=1, “b”=2, “c”=3, “d”=4, “e”=5)`, show how to select the third and fifth elements of x by using
+positive integers, negative integers, a logical vector, and a character vector.
+
+
+```r
+x <- c("a"=1, "b"=2, "c"=3, "d"=4, "e"=5)
+x[c(3,5)]
+```
+
+```
+## c e 
+## 3 5
+```
+
+```r
+x[-c(1,2,4)]
+```
+
+```
+## c e 
+## 3 5
+```
+
+```r
+x[c(F,F,T,F,T)]
+```
+
+```
+## c e 
+## 3 5
+```
+
+```r
+x[c("c", "e")]
+```
+
+```
+## c e 
+## 3 5
+```
+
+##
+Why are `vals[c(2, 5)]` and `vals[2, 5]` different where `vals <- outer(1:5, 1:5, FUN = “/”)`? How would you select fifth and
+nineth elements of vals by the use of a matrix?
+
+
+```r
+vals <- outer(1:5, 1:5, FUN = "/")
+
+# Because when you subset matrix with a vector, the 2d matrix behaves
+# like a vector and vals[c(2, 5)] returns the elements at indices 2
+# and 5 in column-major order. vals[2, 5] returns the element at row 2, column 5.
+
+select <- matrix(ncol=2, byrow=TRUE, c(5,1,4,2))
+
+vals[select]
+```
+
+```
+## [1] 5 2
+```
+
+
+##
+Consider df <- data.frame(a=paste(“Point_”, 1:20), b=rep(1:4, each = 2, len = 20), c= seq(1,40,length.out = 20),
+stringsAsFactors = F). Assign “Point_undefined” to column a of all rows of df where column b > 1 and column c > 21 ?
+What is the reason of the different result that you get if you do the same operation with df being created with option
+stringsAsFactors = T ?
+
+##
+Assume x <- matrix(1:20, ncol=2). What is the difference between x[1, , drop = T] and x[1, , drop = F]? Now let y <-
+as.data.frame(x). What is the difference between y[,1] , y[[1]] and y[1]
+
+##
+What is the difference between x[“b”] <- list(NULL) and x[“b”] <- NULL where x <- list(a = c(1:5), b = c(12:15))?
+
+## 
+Assume you have a lookup table as lookup <- c(a = “sun”, b = “rain”, c=“wind”, u = NA). How would you generate
+the weekly weather predictions c(“sun”,“sun”,“rain”, NA, “rain”, “rain”, “wind”) out of this lookup table?
+
+##
+Now assume the weather in winter lookup table is a data frame as below and we have the predictions for the next week as
+stored in weeklyCast. How would you create “weeklyTable” by the use of rownames function? How would you create it by
+the use of match function? How would you order the rows of lookup table by desc column?
+
+##
+Consider the bigDF data frame which has 1500 columns and rows. How would you select the even numbered columns
+named such as “Column_2”, “Column_4”, etc.? How would you select all the columns other than column 76? How
+would you assign 1 to 500 randomly selected diagonal indices? How can you retrieve the row and column indices of the
+elements which has been assigned 1? How would you select rows where columns Column_1 or Column_2 are 1 by using
+the subset() function?
+
+##
+Assume x <- 1:20 %% 2 == 0 and y <- 1:20 %% 5 == 0 . What are the indices of the elements that are True for both
+x and y? What are the indices of the elements that are True for either x or y, or both?
+
+# Data Import
+
+## Flat File - Q1
+
+A csv file has numbers as column names in the first row, i.e. IDs to randomize persons. Which
+parameter of read.table() needs to be adjusted to read the column names as they are in the
+csv?
+
+
+```r
+tmp_tidy_table <- "1_colname, 2_colname, 3_colname
+3,4,5
+a,b,c"
+tmp_tidy_table
+```
+
+```
+## [1] "1_colname, 2_colname, 3_colname\n3,4,5\na,b,c"
+```
+
+```r
+read.csv(text=tmp_tidy_table)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["X1_colname"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["X2_colname"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["X3_colname"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"3","2":"4","3":"5"},{"1":"a","2":"b","3":"c"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+# Parameter `check.names`: a logical, tests for synatactically valid varaible 
+# names
+
+tidy_text_df <- read.csv(text=tmp_tidy_table, check.names = FALSE)
+tidy_text_df
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["1_colname"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["2_colname"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["3_colname"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"3","2":"4","3":"5"},{"1":"a","2":"b","3":"c"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+## Flat File - Q2
+
+How to read the following table to have the `identical()` information as in `tidy_txt_df` from
+question above?
+
+
+```r
+tmp_messy_table <- "# This line is just useless info
+
+1_colname,2_colname,3_colname
+3,4,5
+
+a,b,c"
+```
+
+
+```r
+# To have the identical information as in the previous table we have to check
+# which lines are comments. We can do this with `comment.char` parameter.
+
+messy_text_df <- read.csv(text = tmp_messy_table, comment.char = '#', check.names = F)
+identical(messy_text_df, tidy_text_df)
+```
+
+```
+## [1] TRUE
+```
+
+## Flat File - Q3
+
+Read the `hollywood.tsv` (not *.csv) file into a `data.table` R object. What is the problem with
+`fread()`?
+
+
+```r
+library(data.table)
+file_holly_tab <- "extdata/hollywood.tsv"
+holly <- as.data.table(read.delim(file_holly_tab), keep_row_names=T)
+head(holly)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Film"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Genre"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["Lead.Studio"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["Audience..score.."],"name":[4],"type":["int"],"align":["right"]},{"label":["Profitability"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Rotten.Tomatoes.."],"name":[6],"type":["int"],"align":["right"]},{"label":["Worldwide.Gross"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"27 Dresses","2":"Comedy","3":"Fox","4":"71","5":"5.3436218","6":"40","7":"160.308654","8":"2008"},{"1":"(500) Days of Summer","2":"Comedy","3":"Fox","4":"81","5":"8.0960000","6":"87","7":"60.720000","8":"2009"},{"1":"A Dangerous Method","2":"Drama","3":"Independent","4":"89","5":"0.4486447","6":"79","7":"8.972895","8":"2011"},{"1":"A Serious Man","2":"Drama","3":"Universal","4":"64","5":"4.3828571","6":"89","7":"30.680000","8":"2009"},{"1":"Across the Universe","2":"Romance","3":"Independent","4":"84","5":"0.6526032","6":"54","7":"29.367143","8":"2007"},{"1":"Beginners","2":"Comedy","3":"Independent","4":"80","5":"4.4718750","6":"84","7":"14.310000","8":"2011"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+class(holly)
+```
+
+```
+## [1] "data.table" "data.frame"
+```
+
+```r
+holly_data_table <- fread(file_holly_tab, skip=1)
+class(holly_data_table)
+```
+
+```
+## [1] "data.table" "data.frame"
+```
+
+```r
+head(holly_data_table)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["V1"],"name":[1],"type":["chr"],"align":["left"]},{"label":["V2"],"name":[2],"type":["chr"],"align":["left"]},{"label":["V3"],"name":[3],"type":["chr"],"align":["left"]},{"label":["V4"],"name":[4],"type":["chr"],"align":["left"]},{"label":["V5"],"name":[5],"type":["int"],"align":["right"]},{"label":["V6"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["V7"],"name":[7],"type":["int"],"align":["right"]},{"label":["V8"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["V9"],"name":[9],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"27 Dresses","3":"Comedy","4":"Fox","5":"71","6":"5.3436218","7":"40","8":"160.308654","9":"2008"},{"1":"2","2":"(500) Days of Summer","3":"Comedy","4":"Fox","5":"81","6":"8.0960000","7":"87","8":"60.720000","9":"2009"},{"1":"3","2":"A Dangerous Method","3":"Drama","4":"Independent","5":"89","6":"0.4486447","7":"79","8":"8.972895","9":"2011"},{"1":"4","2":"A Serious Man","3":"Drama","4":"Universal","5":"64","6":"4.3828571","7":"89","8":"30.680000","9":"2009"},{"1":"5","2":"Across the Universe","3":"Romance","4":"Independent","5":"84","6":"0.6526032","7":"54","8":"29.367143","9":"2007"},{"1":"6","2":"Beginners","3":"Comedy","4":"Independent","5":"80","6":"4.4718750","7":"84","8":"14.310000","9":"2011"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+holly_cn <- c("ID", colnames(read.delim(file_holly_tab, nrows= 1)))
+holly_cn
+```
+
+```
+## [1] "ID"                "Film"              "Genre"            
+## [4] "Lead.Studio"       "Audience..score.." "Profitability"    
+## [7] "Rotten.Tomatoes.." "Worldwide.Gross"   "Year"
+```
+
+```r
+# setnames(holly, holly_cn)
+# head(holly)
+# Difference between them: We can keep row_names. data.frame has no row_names.
+```
+
+
+## Flat File - Q4
+
+Who was the oldest surviving passenger of the titanic accident (titanic.csv)? Tipp: `?subset`
+
+
+```r
+tit_df <- read.csv("extdata/titanic.csv")
+head(tit_df)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["pclass"],"name":[1],"type":["int"],"align":["right"]},{"label":["survived"],"name":[2],"type":["int"],"align":["right"]},{"label":["name"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["sex"],"name":[4],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sibsp"],"name":[6],"type":["int"],"align":["right"]},{"label":["parch"],"name":[7],"type":["int"],"align":["right"]},{"label":["ticket"],"name":[8],"type":["fctr"],"align":["left"]},{"label":["fare"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["cabin"],"name":[10],"type":["fctr"],"align":["left"]},{"label":["embarked"],"name":[11],"type":["fctr"],"align":["left"]},{"label":["boat"],"name":[12],"type":["fctr"],"align":["left"]},{"label":["body"],"name":[13],"type":["int"],"align":["right"]},{"label":["home.dest"],"name":[14],"type":["fctr"],"align":["left"]}],"data":[{"1":"1","2":"1","3":"Allen, Miss. Elisabeth Walton","4":"female","5":"29.00","6":"0","7":"0","8":"24160","9":"211.3375","10":"B5","11":"S","12":"2","13":"NA","14":"St Louis, MO","_rn_":"1"},{"1":"1","2":"1","3":"Allison, Master. Hudson Trevor","4":"male","5":"0.92","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"11","13":"NA","14":"Montreal, PQ / Chesterville, ON","_rn_":"2"},{"1":"1","2":"0","3":"Allison, Miss. Helen Loraine","4":"female","5":"2.00","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"","13":"NA","14":"Montreal, PQ / Chesterville, ON","_rn_":"3"},{"1":"1","2":"0","3":"Allison, Mr. Hudson Joshua Creighton","4":"male","5":"30.00","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"","13":"135","14":"Montreal, PQ / Chesterville, ON","_rn_":"4"},{"1":"1","2":"0","3":"Allison, Mrs. Hudson J C (Bessie Waldo Daniels)","4":"female","5":"25.00","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"","13":"NA","14":"Montreal, PQ / Chesterville, ON","_rn_":"5"},{"1":"1","2":"1","3":"Anderson, Mr. Harry","4":"male","5":"48.00","6":"0","7":"0","8":"19952","9":"26.5500","10":"E12","11":"S","12":"3","13":"NA","14":"New York, NY","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+survivor_name <- subset(tit_df, survived==1 & age==max(age, na.rm = T), name)
+survivor_age <- subset(tit_df, survived==1 & age==max(age, na.rm = T), age)
+
+survivor_name
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]}],"data":[{"1":"Barkworth, Mr. Algernon Henry Wilson","_rn_":"15"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+survivor_age
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"80","_rn_":"15"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+## Excel Questions - Q1
+
+Read only Name, Type and Total columns for only the first 10 pokemons of the pokemon.xlsx
+file.
+
+## Excel Question - Q2
+
+Which athlete won most bronze medals?
+
+## Excel Question - Q3
+
+Are the columns Gender and Event_gender consistent?
+
+## Excel Question - Q4
+
+Which country won most medals? Which country has the highest ratio of silver medals? Use
+the data in the country summary sheet starting at row 147.
+
+## Excel Questions
+
+Which countries did participate, but without winning medals?
+
+## XML - Q1
+
+Load the XML document plant_catalog.xml. Use XPath and DOM functions to find out all
+unique element names in the document.
+
+Get all plants of zone 4 and transform the data into an R list.
+
+## XML - Q2
+
+Read the tables HTML tables from the TUM website of dates for the winter term
+https://www.tum.de/en/studies/application-and-acceptance/dates-and-deadlines/
+dates-and-deadlines-17/ into your workspace.
+When are the Christmas holidays?
+
+## JSON - Q1
+
+Read the countries.json file. Which countries have common border with Jordan? Which
+country has the most neighbors?
+
+## JSON - Q2
+
+Read this JSON file about projects funded by the world bank: world_bank.json.zip. Be aware,
+you might need to add syntax elements like “[” and “,” to convert the file into textbook
+JSON format, i.e. readable by R. What was the most expensive project?
+
+## SQL - Q1
+
+Use the extdata/Northwind.sl3 SQLite data base and retrieve a table that lists for all
+customers (name of the company, name of the contact person and city) all the products
+(name of the product) that they ordered. How many rows does this table have? Display the
+first 5 rows.

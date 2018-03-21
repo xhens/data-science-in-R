@@ -1734,6 +1734,36 @@ $(document).ready(function () {
 </ul></li>
 <li><a href="#advanced-r-data-structures-and-mathematical-operations"><span class="toc-section-number">2</span> Advanced R Data Structures and Mathematical Operations</a><ul>
 <li><a href="#basic-data-structures"><span class="toc-section-number">2.1</span> Basic data structures</a></li>
+<li><a href="#section"><span class="toc-section-number">2.2</span> </a></li>
+<li><a href="#section-1"><span class="toc-section-number">2.3</span> </a></li>
+<li><a href="#section-2"><span class="toc-section-number">2.4</span> </a></li>
+<li><a href="#section-3"><span class="toc-section-number">2.5</span> </a></li>
+<li><a href="#lapply"><span class="toc-section-number">2.6</span> <code>lapply()</code></a></li>
+<li><a href="#section-4"><span class="toc-section-number">2.7</span> </a></li>
+<li><a href="#section-5"><span class="toc-section-number">2.8</span> </a></li>
+<li><a href="#section-6"><span class="toc-section-number">2.9</span> </a></li>
+<li><a href="#section-7"><span class="toc-section-number">2.10</span> </a></li>
+<li><a href="#section-8"><span class="toc-section-number">2.11</span> </a></li>
+<li><a href="#section-9"><span class="toc-section-number">2.12</span> </a></li>
+<li><a href="#section-10"><span class="toc-section-number">2.13</span> </a></li>
+<li><a href="#section-11"><span class="toc-section-number">2.14</span> </a></li>
+<li><a href="#section-12"><span class="toc-section-number">2.15</span> </a></li>
+</ul></li>
+<li><a href="#data-import"><span class="toc-section-number">3</span> Data Import</a><ul>
+<li><a href="#flat-file---q1"><span class="toc-section-number">3.1</span> Flat File - Q1</a></li>
+<li><a href="#flat-file---q2"><span class="toc-section-number">3.2</span> Flat File - Q2</a></li>
+<li><a href="#flat-file---q3"><span class="toc-section-number">3.3</span> Flat File - Q3</a></li>
+<li><a href="#flat-file---q4"><span class="toc-section-number">3.4</span> Flat File - Q4</a></li>
+<li><a href="#excel-questions---q1"><span class="toc-section-number">3.5</span> Excel Questions - Q1</a></li>
+<li><a href="#excel-question---q2"><span class="toc-section-number">3.6</span> Excel Question - Q2</a></li>
+<li><a href="#excel-question---q3"><span class="toc-section-number">3.7</span> Excel Question - Q3</a></li>
+<li><a href="#excel-question---q4"><span class="toc-section-number">3.8</span> Excel Question - Q4</a></li>
+<li><a href="#excel-questions"><span class="toc-section-number">3.9</span> Excel Questions</a></li>
+<li><a href="#xml---q1"><span class="toc-section-number">3.10</span> XML - Q1</a></li>
+<li><a href="#xml---q2"><span class="toc-section-number">3.11</span> XML - Q2</a></li>
+<li><a href="#json---q1"><span class="toc-section-number">3.12</span> JSON - Q1</a></li>
+<li><a href="#json---q2"><span class="toc-section-number">3.13</span> JSON - Q2</a></li>
+<li><a href="#sql---q1"><span class="toc-section-number">3.14</span> SQL - Q1</a></li>
 </ul></li>
 </ul>
 </div>
@@ -2091,122 +2121,122 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb68-5" data-line-number="5"><span class="co"># rows</span></a>
 <a class="sourceLine" id="cb68-6" data-line-number="6"><span class="kw">system.time</span>(res &lt;-<span class="st"> </span><span class="kw">sum</span>(df[<span class="dv">1</span>,]))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.025   0.000   0.024</code></pre>
+##   0.024   0.000   0.025</code></pre>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">res</a></code></pre></div>
-<pre><code>## [1] 1509.453</code></pre>
+<pre><code>## [1] 1479.991</code></pre>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># columngs</span></a>
 <a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw">system.time</span>(res2 &lt;-<span class="st"> </span><span class="kw">sum</span>(df[,<span class="dv">1</span>]))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
 ##       0       0       0</code></pre>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">res2</a></code></pre></div>
-<pre><code>## [1] 1487.859</code></pre>
+<pre><code>## [1] 1523.028</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># Look at the structure of the objects over which we are computing the sum</span></a>
 <a class="sourceLine" id="cb76-2" data-line-number="2"><span class="co"># Column</span></a>
 <a class="sourceLine" id="cb76-3" data-line-number="3"><span class="kw">str</span>(df[<span class="dv">1</span>,])</a></code></pre></div>
 <pre><code>## 'data.frame':    1 obs. of  3000 variables:
-##  $ V1   : num 0.209
-##  $ V2   : num 0.278
-##  $ V3   : num 0.17
-##  $ V4   : num 0.072
-##  $ V5   : num 0.222
-##  $ V6   : num 0.474
-##  $ V7   : num 0.185
-##  $ V8   : num 0.408
-##  $ V9   : num 0.00649
-##  $ V10  : num 0.509
-##  $ V11  : num 0.481
-##  $ V12  : num 0.853
-##  $ V13  : num 0.645
-##  $ V14  : num 0.052
-##  $ V15  : num 0.224
-##  $ V16  : num 0.437
-##  $ V17  : num 0.328
-##  $ V18  : num 0.0288
-##  $ V19  : num 0.715
-##  $ V20  : num 0.818
-##  $ V21  : num 0.425
-##  $ V22  : num 0.746
-##  $ V23  : num 0.879
-##  $ V24  : num 0.696
-##  $ V25  : num 0.558
-##  $ V26  : num 0.282
-##  $ V27  : num 0.00155
-##  $ V28  : num 0.975
-##  $ V29  : num 0.23
-##  $ V30  : num 0.867
-##  $ V31  : num 0.66
-##  $ V32  : num 0.479
-##  $ V33  : num 0.749
-##  $ V34  : num 0.929
-##  $ V35  : num 0.0886
-##  $ V36  : num 0.0555
-##  $ V37  : num 0.42
-##  $ V38  : num 0.982
-##  $ V39  : num 0.0445
-##  $ V40  : num 0.892
-##  $ V41  : num 0.217
-##  $ V42  : num 0.189
-##  $ V43  : num 0.294
-##  $ V44  : num 0.749
-##  $ V45  : num 0.887
-##  $ V46  : num 0.899
-##  $ V47  : num 0.797
-##  $ V48  : num 0.668
-##  $ V49  : num 0.68
-##  $ V50  : num 0.946
-##  $ V51  : num 0.747
-##  $ V52  : num 0.309
-##  $ V53  : num 0.337
-##  $ V54  : num 0.0362
-##  $ V55  : num 0.753
-##  $ V56  : num 0.951
-##  $ V57  : num 0.679
-##  $ V58  : num 0.377
-##  $ V59  : num 0.411
-##  $ V60  : num 0.0655
-##  $ V61  : num 0.161
-##  $ V62  : num 0.974
-##  $ V63  : num 0.424
-##  $ V64  : num 0.131
-##  $ V65  : num 0.771
-##  $ V66  : num 0.865
-##  $ V67  : num 0.107
-##  $ V68  : num 0.383
-##  $ V69  : num 0.611
-##  $ V70  : num 0.749
-##  $ V71  : num 0.365
-##  $ V72  : num 0.833
-##  $ V73  : num 0.134
-##  $ V74  : num 0.757
-##  $ V75  : num 0.0162
-##  $ V76  : num 0.0352
-##  $ V77  : num 0.382
-##  $ V78  : num 0.149
-##  $ V79  : num 0.814
-##  $ V80  : num 0.617
-##  $ V81  : num 0.955
-##  $ V82  : num 0.386
-##  $ V83  : num 0.896
-##  $ V84  : num 0.963
-##  $ V85  : num 0.571
-##  $ V86  : num 0.206
-##  $ V87  : num 0.0759
-##  $ V88  : num 0.438
-##  $ V89  : num 0.637
-##  $ V90  : num 0.518
-##  $ V91  : num 0.588
-##  $ V92  : num 0.282
-##  $ V93  : num 0.242
-##  $ V94  : num 0.467
-##  $ V95  : num 0.609
-##  $ V96  : num 0.503
-##  $ V97  : num 0.429
-##  $ V98  : num 0.334
-##  $ V99  : num 0.0378
+##  $ V1   : num 0.475
+##  $ V2   : num 0.862
+##  $ V3   : num 0.297
+##  $ V4   : num 0.412
+##  $ V5   : num 0.643
+##  $ V6   : num 0.906
+##  $ V7   : num 0.558
+##  $ V8   : num 0.422
+##  $ V9   : num 0.992
+##  $ V10  : num 0.861
+##  $ V11  : num 0.305
+##  $ V12  : num 0.455
+##  $ V13  : num 0.749
+##  $ V14  : num 0.364
+##  $ V15  : num 0.325
+##  $ V16  : num 0.653
+##  $ V17  : num 0.827
+##  $ V18  : num 0.218
+##  $ V19  : num 0.0861
+##  $ V20  : num 0.0243
+##  $ V21  : num 0.469
+##  $ V22  : num 0.0678
+##  $ V23  : num 0.185
+##  $ V24  : num 0.357
+##  $ V25  : num 0.0248
+##  $ V26  : num 0.164
+##  $ V27  : num 0.979
+##  $ V28  : num 0.345
+##  $ V29  : num 0.652
+##  $ V30  : num 0.698
+##  $ V31  : num 0.167
+##  $ V32  : num 0.26
+##  $ V33  : num 0.813
+##  $ V34  : num 0.354
+##  $ V35  : num 0.155
+##  $ V36  : num 0.435
+##  $ V37  : num 0.132
+##  $ V38  : num 0.515
+##  $ V39  : num 0.515
+##  $ V40  : num 0.607
+##  $ V41  : num 0.285
+##  $ V42  : num 0.075
+##  $ V43  : num 0.617
+##  $ V44  : num 0.592
+##  $ V45  : num 0.888
+##  $ V46  : num 0.261
+##  $ V47  : num 0.85
+##  $ V48  : num 0.948
+##  $ V49  : num 0.632
+##  $ V50  : num 0.644
+##  $ V51  : num 0.712
+##  $ V52  : num 0.201
+##  $ V53  : num 0.57
+##  $ V54  : num 0.147
+##  $ V55  : num 0.551
+##  $ V56  : num 0.173
+##  $ V57  : num 0.127
+##  $ V58  : num 0.816
+##  $ V59  : num 0.656
+##  $ V60  : num 0.991
+##  $ V61  : num 0.671
+##  $ V62  : num 0.292
+##  $ V63  : num 0.214
+##  $ V64  : num 0.961
+##  $ V65  : num 0.37
+##  $ V66  : num 0.718
+##  $ V67  : num 0.521
+##  $ V68  : num 0.673
+##  $ V69  : num 0.457
+##  $ V70  : num 0.0437
+##  $ V71  : num 0.175
+##  $ V72  : num 0.379
+##  $ V73  : num 0.23
+##  $ V74  : num 0.17
+##  $ V75  : num 0.324
+##  $ V76  : num 0.548
+##  $ V77  : num 0.232
+##  $ V78  : num 0.476
+##  $ V79  : num 0.67
+##  $ V80  : num 0.021
+##  $ V81  : num 0.13
+##  $ V82  : num 0.0592
+##  $ V83  : num 0.629
+##  $ V84  : num 0.104
+##  $ V85  : num 0.722
+##  $ V86  : num 0.992
+##  $ V87  : num 0.526
+##  $ V88  : num 0.548
+##  $ V89  : num 0.886
+##  $ V90  : num 0.991
+##  $ V91  : num 0.108
+##  $ V92  : num 0.643
+##  $ V93  : num 0.465
+##  $ V94  : num 0.201
+##  $ V95  : num 0.857
+##  $ V96  : num 0.65
+##  $ V97  : num 0.235
+##  $ V98  : num 0.715
+##  $ V99  : num 0.6
 ##   [list output truncated]</code></pre>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co"># Row</span></a>
 <a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">str</span>(df[,<span class="dv">1</span>])</a></code></pre></div>
-<pre><code>##  num [1:3000] 0.209 0.143 0.982 0.221 0.264 ...</code></pre>
+<pre><code>##  num [1:3000] 0.4753 0.5895 0.8259 0.0129 0.2775 ...</code></pre>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co"># As we can see the extracted column is a numeric vector. But the extracted</span></a>
 <a class="sourceLine" id="cb80-2" data-line-number="2"><span class="co"># row is a list. Under the hood the sum function is iterating in C/Fortran</span></a>
 <a class="sourceLine" id="cb80-3" data-line-number="3"><span class="co"># over the specific structure. Iterating over a native array of doubles is</span></a>
@@ -2254,6 +2284,278 @@ $(document).ready(function () {
 {"columns":[{"label":["V1"],"name":[1],"type":["int"],"align":["right"]},{"label":["V2"],"name":[2],"type":["int"],"align":["right"]},{"label":["V3"],"name":[3],"type":["int"],"align":["right"]},{"label":["V4"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10"},{"1":"2","2":"5","3":"8","4":"11"},{"1":"3","2":"6","3":"9","4":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+</div>
+<div id="section" class="section level2">
+<h2><span class="header-section-number">2.2</span> </h2>
+<p>Please use the data frame you created in the first question for the next 5 questions. How would you select the second row elements at second and fourth column ?</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">3</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">x[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)]</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["X2"],"name":[1],"type":["int"],"align":["right"]},{"label":["X4"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"5","2":"11","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="section-1" class="section level2">
+<h2><span class="header-section-number">2.3</span> </h2>
+<p>How would you assign zero to the elements at row 2 which are greater than 4?</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">3</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">x[<span class="dv">2</span>, x[<span class="dv">2</span>,]<span class="op">&gt;</span><span class="dv">4</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb91-3" data-line-number="3">x</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["X1"],"name":[1],"type":["int"],"align":["right"]},{"label":["X2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["X3"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["X4"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10"},{"1":"2","2":"0","3":"0","4":"0"},{"1":"3","2":"6","3":"9","4":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="section-2" class="section level2">
+<h2><span class="header-section-number">2.4</span> </h2>
+<p>How do you set the rownames to “row1”, “row2”, “row3” and column names to “col1”, “col2”, “col3” and “col4” ? (hint:use function “paste0”)</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">3</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="kw">rownames</span>(x) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;row&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="kw">colnames</span>(x) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;col&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb92-4" data-line-number="4">x</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["col1"],"name":[1],"type":["int"],"align":["right"]},{"label":["col2"],"name":[2],"type":["int"],"align":["right"]},{"label":["col3"],"name":[3],"type":["int"],"align":["right"]},{"label":["col4"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10","_rn_":"row1"},{"1":"2","2":"5","3":"8","4":"11","_rn_":"row2"},{"1":"3","2":"6","3":"9","4":"12","_rn_":"row3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="section-3" class="section level2">
+<h2><span class="header-section-number">2.5</span> </h2>
+<p>How do you assign 0 to all elements in columns “col3” and “col4” by using paste0 function ?</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">3</span>, <span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="kw">colnames</span>(x) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;col&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">x[, <span class="kw">paste0</span>(<span class="dv">0</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">4</span>)] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb93-4" data-line-number="4">x</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["col1"],"name":[1],"type":["int"],"align":["right"]},{"label":["col2"],"name":[2],"type":["int"],"align":["right"]},{"label":["col3"],"name":[3],"type":["int"],"align":["right"]},{"label":["col4"],"name":[4],"type":["int"],"align":["right"]},{"label":["03"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["04"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"4","3":"7","4":"10","5":"0","6":"0"},{"1":"2","2":"5","3":"8","4":"11","5":"0","6":"0"},{"1":"3","2":"6","3":"9","4":"12","5":"0","6":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="lapply" class="section level2">
+<h2><span class="header-section-number">2.6</span> <code>lapply()</code></h2>
+<p>How do you get the numbers whose mod 2 is 0</p>
+<ul>
+<li>by using lapply() function</li>
+<li>by subsetting the data frame directly?</li>
+</ul>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), <span class="dv">3</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="kw">lapply</span>(x, <span class="cf">function</span>(a) a[(a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>])</a></code></pre></div>
+<pre><code>## $matrix.1.12.
+## [1]  2  4  6  8 10 12
+## 
+## $X3
+## numeric(0)
+## 
+## $X4
+##  [1] 4 4 4 4 4 4 4 4 4 4 4 4</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">x[x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]</a></code></pre></div>
+<pre><code>##  [1]  2  4  6  8 10 12  4  4  4  4  4  4  4  4  4  4  4  4</code></pre>
+</div>
+<div id="section-4" class="section level2">
+<h2><span class="header-section-number">2.7</span> </h2>
+<p>Considering <code>x &lt;- c(“a”=1, “b”=2, “c”=3, “d”=4, “e”=5)</code>, show how to select the third and fifth elements of x by using positive integers, negative integers, a logical vector, and a character vector.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>=<span class="dv">1</span>, <span class="st">&quot;b&quot;</span>=<span class="dv">2</span>, <span class="st">&quot;c&quot;</span>=<span class="dv">3</span>, <span class="st">&quot;d&quot;</span>=<span class="dv">4</span>, <span class="st">&quot;e&quot;</span>=<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">x[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>)]</a></code></pre></div>
+<pre><code>## c e 
+## 3 5</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">x[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>)]</a></code></pre></div>
+<pre><code>## c e 
+## 3 5</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">x[<span class="kw">c</span>(F,F,T,F,T)]</a></code></pre></div>
+<pre><code>## c e 
+## 3 5</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">x[<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;e&quot;</span>)]</a></code></pre></div>
+<pre><code>## c e 
+## 3 5</code></pre>
+</div>
+<div id="section-5" class="section level2">
+<h2><span class="header-section-number">2.8</span> </h2>
+<p>Why are <code>vals[c(2, 5)]</code> and <code>vals[2, 5]</code> different where <code>vals &lt;- outer(1:5, 1:5, FUN = “/”)</code>? How would you select fifth and nineth elements of vals by the use of a matrix?</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">vals &lt;-<span class="st"> </span><span class="kw">outer</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">FUN =</span> <span class="st">&quot;/&quot;</span>)</a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb106-3" data-line-number="3"><span class="co"># Because when you subset matrix with a vector, the 2d matrix behaves</span></a>
+<a class="sourceLine" id="cb106-4" data-line-number="4"><span class="co"># like a vector and vals[c(2, 5)] returns the elements at indices 2</span></a>
+<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="co"># and 5 in column-major order. vals[2, 5] returns the element at row 2, column 5.</span></a>
+<a class="sourceLine" id="cb106-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb106-7" data-line-number="7">select &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>, <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb106-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb106-9" data-line-number="9">vals[select]</a></code></pre></div>
+<pre><code>## [1] 5 2</code></pre>
+</div>
+<div id="section-6" class="section level2">
+<h2><span class="header-section-number">2.9</span> </h2>
+<p>Consider df &lt;- data.frame(a=paste(“Point_”, 1:20), b=rep(1:4, each = 2, len = 20), c= seq(1,40,length.out = 20), stringsAsFactors = F). Assign “Point_undefined” to column a of all rows of df where column b &gt; 1 and column c &gt; 21 ? What is the reason of the different result that you get if you do the same operation with df being created with option stringsAsFactors = T ?</p>
+</div>
+<div id="section-7" class="section level2">
+<h2><span class="header-section-number">2.10</span> </h2>
+<p>Assume x &lt;- matrix(1:20, ncol=2). What is the difference between x[1, , drop = T] and x[1, , drop = F]? Now let y &lt;- as.data.frame(x). What is the difference between y[,1] , y[[1]] and y[1]</p>
+</div>
+<div id="section-8" class="section level2">
+<h2><span class="header-section-number">2.11</span> </h2>
+<p>What is the difference between x[“b”] &lt;- list(NULL) and x[“b”] &lt;- NULL where x &lt;- list(a = c(1:5), b = c(12:15))?</p>
+</div>
+<div id="section-9" class="section level2">
+<h2><span class="header-section-number">2.12</span> </h2>
+<p>Assume you have a lookup table as lookup &lt;- c(a = “sun”, b = “rain”, c=“wind”, u = NA). How would you generate the weekly weather predictions c(“sun”,“sun”,“rain”, NA, “rain”, “rain”, “wind”) out of this lookup table?</p>
+</div>
+<div id="section-10" class="section level2">
+<h2><span class="header-section-number">2.13</span> </h2>
+<p>Now assume the weather in winter lookup table is a data frame as below and we have the predictions for the next week as stored in weeklyCast. How would you create “weeklyTable” by the use of rownames function? How would you create it by the use of match function? How would you order the rows of lookup table by desc column?</p>
+</div>
+<div id="section-11" class="section level2">
+<h2><span class="header-section-number">2.14</span> </h2>
+<p>Consider the bigDF data frame which has 1500 columns and rows. How would you select the even numbered columns named such as “Column_2”, “Column_4”, etc.? How would you select all the columns other than column 76? How would you assign 1 to 500 randomly selected diagonal indices? How can you retrieve the row and column indices of the elements which has been assigned 1? How would you select rows where columns Column_1 or Column_2 are 1 by using the subset() function?</p>
+</div>
+<div id="section-12" class="section level2">
+<h2><span class="header-section-number">2.15</span> </h2>
+<p>Assume x &lt;- 1:20 %% 2 == 0 and y &lt;- 1:20 %% 5 == 0 . What are the indices of the elements that are True for both x and y? What are the indices of the elements that are True for either x or y, or both?</p>
+</div>
+</div>
+<div id="data-import" class="section level1">
+<h1><span class="header-section-number">3</span> Data Import</h1>
+<div id="flat-file---q1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Flat File - Q1</h2>
+<p>A csv file has numbers as column names in the first row, i.e. IDs to randomize persons. Which parameter of read.table() needs to be adjusted to read the column names as they are in the csv?</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">tmp_tidy_table &lt;-<span class="st"> &quot;1_colname, 2_colname, 3_colname</span></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="st">3,4,5</span></a>
+<a class="sourceLine" id="cb108-3" data-line-number="3"><span class="st">a,b,c&quot;</span></a>
+<a class="sourceLine" id="cb108-4" data-line-number="4">tmp_tidy_table</a></code></pre></div>
+<pre><code>## [1] &quot;1_colname, 2_colname, 3_colname\n3,4,5\na,b,c&quot;</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">read.csv</span>(<span class="dt">text=</span>tmp_tidy_table)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["X1_colname"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["X2_colname"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["X3_colname"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"3","2":"4","3":"5"},{"1":"a","2":"b","3":"c"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="co"># Parameter `check.names`: a logical, tests for synatactically valid varaible </span></a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="co"># names</span></a>
+<a class="sourceLine" id="cb111-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb111-4" data-line-number="4">tidy_text_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text=</span>tmp_tidy_table, <span class="dt">check.names =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb111-5" data-line-number="5">tidy_text_df</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["1_colname"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["2_colname"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["3_colname"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"3","2":"4","3":"5"},{"1":"a","2":"b","3":"c"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="flat-file---q2" class="section level2">
+<h2><span class="header-section-number">3.2</span> Flat File - Q2</h2>
+<p>How to read the following table to have the <code>identical()</code> information as in <code>tidy_txt_df</code> from question above?</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">tmp_messy_table &lt;-<span class="st"> &quot;# This line is just useless info</span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"><span class="st">1_colname,2_colname,3_colname</span></a>
+<a class="sourceLine" id="cb112-4" data-line-number="4"><span class="st">3,4,5</span></a>
+<a class="sourceLine" id="cb112-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb112-6" data-line-number="6"><span class="st">a,b,c&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="co"># To have the identical information as in the previous table we have to check</span></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="co"># which lines are comments. We can do this with `comment.char` parameter.</span></a>
+<a class="sourceLine" id="cb113-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4">messy_text_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">text =</span> tmp_messy_table, <span class="dt">comment.char =</span> <span class="st">'#'</span>, <span class="dt">check.names =</span> F)</a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="kw">identical</span>(messy_text_df, tidy_text_df)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="flat-file---q3" class="section level2">
+<h2><span class="header-section-number">3.3</span> Flat File - Q3</h2>
+<p>Read the <code>hollywood.tsv</code> (not *.csv) file into a <code>data.table</code> R object. What is the problem with <code>fread()</code>?</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw">library</span>(data.table)</a>
+<a class="sourceLine" id="cb115-2" data-line-number="2">file_holly_tab &lt;-<span class="st"> &quot;extdata/hollywood.tsv&quot;</span></a>
+<a class="sourceLine" id="cb115-3" data-line-number="3">holly &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(<span class="kw">read.delim</span>(file_holly_tab), <span class="dt">keep_row_names=</span>T)</a>
+<a class="sourceLine" id="cb115-4" data-line-number="4"><span class="kw">head</span>(holly)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Film"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Genre"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["Lead.Studio"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["Audience..score.."],"name":[4],"type":["int"],"align":["right"]},{"label":["Profitability"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Rotten.Tomatoes.."],"name":[6],"type":["int"],"align":["right"]},{"label":["Worldwide.Gross"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["Year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"27 Dresses","2":"Comedy","3":"Fox","4":"71","5":"5.3436218","6":"40","7":"160.308654","8":"2008"},{"1":"(500) Days of Summer","2":"Comedy","3":"Fox","4":"81","5":"8.0960000","6":"87","7":"60.720000","8":"2009"},{"1":"A Dangerous Method","2":"Drama","3":"Independent","4":"89","5":"0.4486447","6":"79","7":"8.972895","8":"2011"},{"1":"A Serious Man","2":"Drama","3":"Universal","4":"64","5":"4.3828571","6":"89","7":"30.680000","8":"2009"},{"1":"Across the Universe","2":"Romance","3":"Independent","4":"84","5":"0.6526032","6":"54","7":"29.367143","8":"2007"},{"1":"Beginners","2":"Comedy","3":"Independent","4":"80","5":"4.4718750","6":"84","7":"14.310000","8":"2011"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">class</span>(holly)</a></code></pre></div>
+<pre><code>## [1] &quot;data.table&quot; &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">holly_data_table &lt;-<span class="st"> </span><span class="kw">fread</span>(file_holly_tab, <span class="dt">skip=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb118-2" data-line-number="2"><span class="kw">class</span>(holly_data_table)</a></code></pre></div>
+<pre><code>## [1] &quot;data.table&quot; &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">head</span>(holly_data_table)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["V1"],"name":[1],"type":["chr"],"align":["left"]},{"label":["V2"],"name":[2],"type":["chr"],"align":["left"]},{"label":["V3"],"name":[3],"type":["chr"],"align":["left"]},{"label":["V4"],"name":[4],"type":["chr"],"align":["left"]},{"label":["V5"],"name":[5],"type":["int"],"align":["right"]},{"label":["V6"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["V7"],"name":[7],"type":["int"],"align":["right"]},{"label":["V8"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["V9"],"name":[9],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"27 Dresses","3":"Comedy","4":"Fox","5":"71","6":"5.3436218","7":"40","8":"160.308654","9":"2008"},{"1":"2","2":"(500) Days of Summer","3":"Comedy","4":"Fox","5":"81","6":"8.0960000","7":"87","8":"60.720000","9":"2009"},{"1":"3","2":"A Dangerous Method","3":"Drama","4":"Independent","5":"89","6":"0.4486447","7":"79","8":"8.972895","9":"2011"},{"1":"4","2":"A Serious Man","3":"Drama","4":"Universal","5":"64","6":"4.3828571","7":"89","8":"30.680000","9":"2009"},{"1":"5","2":"Across the Universe","3":"Romance","4":"Independent","5":"84","6":"0.6526032","7":"54","8":"29.367143","9":"2007"},{"1":"6","2":"Beginners","3":"Comedy","4":"Independent","5":"80","6":"4.4718750","7":"84","8":"14.310000","9":"2011"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">holly_cn &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="kw">colnames</span>(<span class="kw">read.delim</span>(file_holly_tab, <span class="dt">nrows=</span> <span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb121-2" data-line-number="2">holly_cn</a></code></pre></div>
+<pre><code>## [1] &quot;ID&quot;                &quot;Film&quot;              &quot;Genre&quot;            
+## [4] &quot;Lead.Studio&quot;       &quot;Audience..score..&quot; &quot;Profitability&quot;    
+## [7] &quot;Rotten.Tomatoes..&quot; &quot;Worldwide.Gross&quot;   &quot;Year&quot;</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="co"># setnames(holly, holly_cn)</span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="co"># head(holly)</span></a>
+<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="co"># Difference between them: We can keep row_names. data.frame has no row_names.</span></a></code></pre></div>
+</div>
+<div id="flat-file---q4" class="section level2">
+<h2><span class="header-section-number">3.4</span> Flat File - Q4</h2>
+<p>Who was the oldest surviving passenger of the titanic accident (titanic.csv)? Tipp: <code>?subset</code></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">tit_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;extdata/titanic.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="kw">head</span>(tit_df)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["pclass"],"name":[1],"type":["int"],"align":["right"]},{"label":["survived"],"name":[2],"type":["int"],"align":["right"]},{"label":["name"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["sex"],"name":[4],"type":["fctr"],"align":["left"]},{"label":["age"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sibsp"],"name":[6],"type":["int"],"align":["right"]},{"label":["parch"],"name":[7],"type":["int"],"align":["right"]},{"label":["ticket"],"name":[8],"type":["fctr"],"align":["left"]},{"label":["fare"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["cabin"],"name":[10],"type":["fctr"],"align":["left"]},{"label":["embarked"],"name":[11],"type":["fctr"],"align":["left"]},{"label":["boat"],"name":[12],"type":["fctr"],"align":["left"]},{"label":["body"],"name":[13],"type":["int"],"align":["right"]},{"label":["home.dest"],"name":[14],"type":["fctr"],"align":["left"]}],"data":[{"1":"1","2":"1","3":"Allen, Miss. Elisabeth Walton","4":"female","5":"29.00","6":"0","7":"0","8":"24160","9":"211.3375","10":"B5","11":"S","12":"2","13":"NA","14":"St Louis, MO","_rn_":"1"},{"1":"1","2":"1","3":"Allison, Master. Hudson Trevor","4":"male","5":"0.92","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"11","13":"NA","14":"Montreal, PQ / Chesterville, ON","_rn_":"2"},{"1":"1","2":"0","3":"Allison, Miss. Helen Loraine","4":"female","5":"2.00","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"","13":"NA","14":"Montreal, PQ / Chesterville, ON","_rn_":"3"},{"1":"1","2":"0","3":"Allison, Mr. Hudson Joshua Creighton","4":"male","5":"30.00","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"","13":"135","14":"Montreal, PQ / Chesterville, ON","_rn_":"4"},{"1":"1","2":"0","3":"Allison, Mrs. Hudson J C (Bessie Waldo Daniels)","4":"female","5":"25.00","6":"1","7":"2","8":"113781","9":"151.5500","10":"C22 C26","11":"S","12":"","13":"NA","14":"Montreal, PQ / Chesterville, ON","_rn_":"5"},{"1":"1","2":"1","3":"Anderson, Mr. Harry","4":"male","5":"48.00","6":"0","7":"0","8":"19952","9":"26.5500","10":"E12","11":"S","12":"3","13":"NA","14":"New York, NY","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">survivor_name &lt;-<span class="st"> </span><span class="kw">subset</span>(tit_df, survived<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>age<span class="op">==</span><span class="kw">max</span>(age, <span class="dt">na.rm =</span> T), name)</a>
+<a class="sourceLine" id="cb125-2" data-line-number="2">survivor_age &lt;-<span class="st"> </span><span class="kw">subset</span>(tit_df, survived<span class="op">==</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>age<span class="op">==</span><span class="kw">max</span>(age, <span class="dt">na.rm =</span> T), age)</a>
+<a class="sourceLine" id="cb125-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb125-4" data-line-number="4">survivor_name</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]}],"data":[{"1":"Barkworth, Mr. Algernon Henry Wilson","_rn_":"15"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">survivor_age</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["age"],"name":[1],"type":["dbl"],"align":["right"]}],"data":[{"1":"80","_rn_":"15"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="excel-questions---q1" class="section level2">
+<h2><span class="header-section-number">3.5</span> Excel Questions - Q1</h2>
+<p>Read only Name, Type and Total columns for only the first 10 pokemons of the pokemon.xlsx file.</p>
+</div>
+<div id="excel-question---q2" class="section level2">
+<h2><span class="header-section-number">3.6</span> Excel Question - Q2</h2>
+<p>Which athlete won most bronze medals?</p>
+</div>
+<div id="excel-question---q3" class="section level2">
+<h2><span class="header-section-number">3.7</span> Excel Question - Q3</h2>
+<p>Are the columns Gender and Event_gender consistent?</p>
+</div>
+<div id="excel-question---q4" class="section level2">
+<h2><span class="header-section-number">3.8</span> Excel Question - Q4</h2>
+<p>Which country won most medals? Which country has the highest ratio of silver medals? Use the data in the country summary sheet starting at row 147.</p>
+</div>
+<div id="excel-questions" class="section level2">
+<h2><span class="header-section-number">3.9</span> Excel Questions</h2>
+<p>Which countries did participate, but without winning medals?</p>
+</div>
+<div id="xml---q1" class="section level2">
+<h2><span class="header-section-number">3.10</span> XML - Q1</h2>
+<p>Load the XML document plant_catalog.xml. Use XPath and DOM functions to find out all unique element names in the document.</p>
+<p>Get all plants of zone 4 and transform the data into an R list.</p>
+</div>
+<div id="xml---q2" class="section level2">
+<h2><span class="header-section-number">3.11</span> XML - Q2</h2>
+<p>Read the tables HTML tables from the TUM website of dates for the winter term <a href="https://www.tum.de/en/studies/application-and-acceptance/dates-and-deadlines/" class="uri">https://www.tum.de/en/studies/application-and-acceptance/dates-and-deadlines/</a> dates-and-deadlines-17/ into your workspace. When are the Christmas holidays?</p>
+</div>
+<div id="json---q1" class="section level2">
+<h2><span class="header-section-number">3.12</span> JSON - Q1</h2>
+<p>Read the countries.json file. Which countries have common border with Jordan? Which country has the most neighbors?</p>
+</div>
+<div id="json---q2" class="section level2">
+<h2><span class="header-section-number">3.13</span> JSON - Q2</h2>
+<p>Read this JSON file about projects funded by the world bank: world_bank.json.zip. Be aware, you might need to add syntax elements like “[” and “,” to convert the file into textbook JSON format, i.e. readable by R. What was the most expensive project?</p>
+</div>
+<div id="sql---q1" class="section level2">
+<h2><span class="header-section-number">3.14</span> SQL - Q1</h2>
+<p>Use the extdata/Northwind.sl3 SQLite data base and retrieve a table that lists for all customers (name of the company, name of the contact person and city) all the products (name of the product) that they ordered. How many rows does this table have? Display the first 5 rows.</p>
 </div>
 </div>
 

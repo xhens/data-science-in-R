@@ -1,0 +1,11 @@
+first,second,third
+1,1.45,group1
+94,4.76,group1
+6,463.3,group2
+83,63.7,group2
+73,52.63,group1
+723,63.232,group1
+7,5.23,group2
+82,65.8532,group2
+12,643.83,group1
+632,2.64,group1
