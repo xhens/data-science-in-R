@@ -616,7 +616,7 @@ system.time(res <- sum(df[1,]))
 
 ```
 ##    user  system elapsed 
-##   0.025   0.000   0.026
+##   0.026   0.000   0.026
 ```
 
 ```r
@@ -624,7 +624,7 @@ res
 ```
 
 ```
-## [1] 1512.509
+## [1] 1498.521
 ```
 
 ```r
@@ -642,7 +642,7 @@ res2
 ```
 
 ```
-## [1] 1502.198
+## [1] 1506.478
 ```
 
 ```r
@@ -653,105 +653,105 @@ str(df[1,])
 
 ```
 ## 'data.frame':	1 obs. of  3000 variables:
-##  $ V1   : num 0.46
-##  $ V2   : num 0.702
-##  $ V3   : num 0.861
-##  $ V4   : num 0.0678
-##  $ V5   : num 0.63
-##  $ V6   : num 0.171
-##  $ V7   : num 0.032
-##  $ V8   : num 0.843
-##  $ V9   : num 0.0858
-##  $ V10  : num 0.566
-##  $ V11  : num 0.422
-##  $ V12  : num 0.536
-##  $ V13  : num 0.861
-##  $ V14  : num 0.826
-##  $ V15  : num 0.541
-##  $ V16  : num 0.441
-##  $ V17  : num 0.676
-##  $ V18  : num 0.706
-##  $ V19  : num 0.528
-##  $ V20  : num 0.42
-##  $ V21  : num 0.396
-##  $ V22  : num 0.0814
-##  $ V23  : num 0.519
-##  $ V24  : num 0.728
-##  $ V25  : num 0.0666
-##  $ V26  : num 0.178
-##  $ V27  : num 0.999
-##  $ V28  : num 0.559
-##  $ V29  : num 0.953
-##  $ V30  : num 0.604
-##  $ V31  : num 0.696
-##  $ V32  : num 0.525
-##  $ V33  : num 0.00355
-##  $ V34  : num 0.434
-##  $ V35  : num 0.5
-##  $ V36  : num 0.128
-##  $ V37  : num 0.168
-##  $ V38  : num 0.592
-##  $ V39  : num 0.516
-##  $ V40  : num 0.105
-##  $ V41  : num 0.0716
-##  $ V42  : num 0.184
-##  $ V43  : num 0.193
-##  $ V44  : num 0.873
-##  $ V45  : num 0.952
-##  $ V46  : num 0.961
-##  $ V47  : num 0.905
-##  $ V48  : num 0.546
-##  $ V49  : num 0.77
-##  $ V50  : num 0.928
-##  $ V51  : num 0.214
-##  $ V52  : num 0.355
-##  $ V53  : num 0.592
-##  $ V54  : num 0.814
-##  $ V55  : num 0.4
-##  $ V56  : num 0.209
-##  $ V57  : num 0.155
-##  $ V58  : num 0.723
-##  $ V59  : num 0.702
-##  $ V60  : num 0.53
-##  $ V61  : num 0.767
-##  $ V62  : num 0.474
-##  $ V63  : num 0.886
-##  $ V64  : num 0.155
-##  $ V65  : num 0.702
-##  $ V66  : num 0.954
-##  $ V67  : num 0.897
-##  $ V68  : num 0.665
-##  $ V69  : num 0.359
-##  $ V70  : num 0.856
-##  $ V71  : num 0.87
-##  $ V72  : num 0.729
-##  $ V73  : num 0.271
-##  $ V74  : num 0.028
-##  $ V75  : num 0.64
-##  $ V76  : num 0.242
-##  $ V77  : num 0.905
-##  $ V78  : num 0.485
-##  $ V79  : num 0.248
-##  $ V80  : num 0.109
-##  $ V81  : num 0.205
-##  $ V82  : num 0.456
-##  $ V83  : num 0.0549
-##  $ V84  : num 0.0786
-##  $ V85  : num 0.323
-##  $ V86  : num 0.659
-##  $ V87  : num 0.21
-##  $ V88  : num 0.714
-##  $ V89  : num 0.0878
-##  $ V90  : num 0.758
-##  $ V91  : num 0.801
-##  $ V92  : num 0.818
-##  $ V93  : num 0.132
-##  $ V94  : num 0.311
-##  $ V95  : num 0.975
-##  $ V96  : num 0.744
-##  $ V97  : num 0.464
-##  $ V98  : num 0.531
-##  $ V99  : num 0.29
+##  $ V1   : num 0.00262
+##  $ V2   : num 0.957
+##  $ V3   : num 0.175
+##  $ V4   : num 0.991
+##  $ V5   : num 0.222
+##  $ V6   : num 0.382
+##  $ V7   : num 0.699
+##  $ V8   : num 0.904
+##  $ V9   : num 0.193
+##  $ V10  : num 0.284
+##  $ V11  : num 0.238
+##  $ V12  : num 0.717
+##  $ V13  : num 0.979
+##  $ V14  : num 0.285
+##  $ V15  : num 0.656
+##  $ V16  : num 0.119
+##  $ V17  : num 0.646
+##  $ V18  : num 0.991
+##  $ V19  : num 0.0121
+##  $ V20  : num 0.999
+##  $ V21  : num 0.259
+##  $ V22  : num 0.711
+##  $ V23  : num 0.955
+##  $ V24  : num 0.446
+##  $ V25  : num 0.768
+##  $ V26  : num 0.789
+##  $ V27  : num 0.591
+##  $ V28  : num 0.396
+##  $ V29  : num 0.3
+##  $ V30  : num 0.793
+##  $ V31  : num 0.834
+##  $ V32  : num 0.488
+##  $ V33  : num 0.0548
+##  $ V34  : num 0.596
+##  $ V35  : num 0.905
+##  $ V36  : num 0.173
+##  $ V37  : num 0.078
+##  $ V38  : num 0.998
+##  $ V39  : num 0.272
+##  $ V40  : num 0.268
+##  $ V41  : num 0.207
+##  $ V42  : num 0.253
+##  $ V43  : num 0.764
+##  $ V44  : num 0.229
+##  $ V45  : num 0.622
+##  $ V46  : num 0.485
+##  $ V47  : num 0.617
+##  $ V48  : num 0.946
+##  $ V49  : num 0.664
+##  $ V50  : num 0.173
+##  $ V51  : num 0.917
+##  $ V52  : num 0.87
+##  $ V53  : num 0.463
+##  $ V54  : num 0.274
+##  $ V55  : num 0.551
+##  $ V56  : num 0.971
+##  $ V57  : num 0.32
+##  $ V58  : num 0.44
+##  $ V59  : num 0.875
+##  $ V60  : num 0.655
+##  $ V61  : num 0.793
+##  $ V62  : num 0.291
+##  $ V63  : num 0.984
+##  $ V64  : num 0.502
+##  $ V65  : num 0.105
+##  $ V66  : num 0.424
+##  $ V67  : num 0.115
+##  $ V68  : num 0.773
+##  $ V69  : num 0.164
+##  $ V70  : num 0.484
+##  $ V71  : num 0.143
+##  $ V72  : num 0.583
+##  $ V73  : num 0.349
+##  $ V74  : num 0.19
+##  $ V75  : num 0.425
+##  $ V76  : num 0.66
+##  $ V77  : num 0.646
+##  $ V78  : num 0.87
+##  $ V79  : num 0.65
+##  $ V80  : num 0.202
+##  $ V81  : num 0.607
+##  $ V82  : num 0.833
+##  $ V83  : num 0.713
+##  $ V84  : num 0.425
+##  $ V85  : num 0.608
+##  $ V86  : num 0.103
+##  $ V87  : num 0.76
+##  $ V88  : num 0.581
+##  $ V89  : num 0.142
+##  $ V90  : num 0.697
+##  $ V91  : num 0.841
+##  $ V92  : num 0.246
+##  $ V93  : num 0.416
+##  $ V94  : num 0.0122
+##  $ V95  : num 0.682
+##  $ V96  : num 0.00994
+##  $ V97  : num 0.417
+##  $ V98  : num 0.501
+##  $ V99  : num 0.764
 ##   [list output truncated]
 ```
 
@@ -761,7 +761,7 @@ str(df[,1])
 ```
 
 ```
-##  num [1:3000] 0.46 0.0462 0.8688 0.8584 0.3737 ...
+##  num [1:3000] 0.00262 0.69918 0.94426 0.55608 0.98968 ...
 ```
 
 ```r
@@ -1570,3 +1570,54 @@ With this plot as a starting point, let's explore some more possibilities of com
   * Remove the smooth layer.
   * Add the points layer back in.
   * Set alpha = 0.4 inside geom_point(). This will make the points 40% transparent.
+  
+
+```r
+# 1 - The plot you created in the previous exercise
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point() +
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'gam'
+```
+
+![](exercises-notebook_files/figure-html/unnamed-chunk-40-1.png)<!-- -->
+
+```r
+# 2 - Copy the above command but show only the smooth line
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'gam'
+```
+
+![](exercises-notebook_files/figure-html/unnamed-chunk-40-2.png)<!-- -->
+
+```r
+# 3 - Copy the above command and assign the correct value to col in aes()
+ggplot(diamonds, aes(x = carat, y = price, color=clarity)) +
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'gam'
+```
+
+![](exercises-notebook_files/figure-html/unnamed-chunk-40-3.png)<!-- -->
+
+```r
+# 4 - Keep the color settings from previous command. Plot only the points with argument alpha.
+ggplot(diamonds, aes(x = carat, y = price, color=clarity)) +
+  geom_point(alpha=0.4)
+```
+
+![](exercises-notebook_files/figure-html/unnamed-chunk-40-4.png)<!-- -->
+
+```r
+## Smooth work! `geom_point() + geom_smooth()` is a common combination.
+```
+
