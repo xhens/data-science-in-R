@@ -1,2 +1,3 @@
-# data-science-in-R
-Exercises in Data Analytics and Visualizations in R
+# Data Analytics and Visualizations in R
+[Read me here!](http://trusting-khorana-635e68.bitballoon.com/) 
+

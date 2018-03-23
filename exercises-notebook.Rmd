@@ -624,3 +624,193 @@ Use the extdata/Northwind.sl3 SQLite data base and retrieve a table that lists f
 customers (name of the company, name of the contact person and city) all the products
 (name of the product) that they ordered. How many rows does this table have? Display the
 first 5 rows.
+
+# Grammar of graphics and plotting I
+
+## Setup
+
+```{r}
+library(ggplot2)
+library(data.table)
+library(magrittr)
+library(tidyr)
+```
+
+## Q1
+
+Match each chart type with the relationship it shows best.
+
+1. shows distribution and quantiles, especially useful when comparing distributions.
+2. highlights individual values, supports comparison and can show rankings or deviations categories and totals
+3. shows overall changes and patterns, usually over intervals of time
+4. shows relationship between two continues variables.
+
+Options: bar chart, line chart, scatterplot, boxplot
+
+```{r}
+# Answer
+# 
+# 1 -> boxplot
+# 2 -> bar chart
+# 3 -> line chart
+# 4. -> scatterplot
+```
+
+## Q2
+`Iris` is a classical dataset in machine learning literature, was first introduced by R.A. Fisher
+in his 1936 paper. Load the iris data into your R environment. What is the dimension of the
+dataset and what kind of data type does each column has?
+
+```{r}
+dim(iris)
+head(iris)
+```
+
+## Q3
+How are the lengths and widths of sepals and petals distributed? How would you visualize
+them. Describe what you see. Hint: `facet_wrap(~variable)`.
+
+```{r}
+iris_melt <- melt(iris, id.var=c("Species"))
+iris_melt
+iris_melt %>% 
+  ggplot(aes(value)) +
+  geom_histogram() +
+  facet_wrap(~variable)
+```
+
+## Q4
+Vary the number of bins in the above histogram. Describe what you see
+
+```{r}
+#Answer: With very few bins, we cannot show the bimodal distribution correctly
+
+iris_melt %>%
+  ggplot(aes(value)) +
+  geom_histogram(bins=5) +
+  facet_wrap(~variable)
+```
+
+
+# Datacamp
+
+## `ggplot2` on Datacamp
+```{r}
+library(ggplot2)
+str(mtcars)
+ggplot(mtcars, aes(x = cyl, y = mpg)) +
+  geom_point()
+
+#Stellar scatterplotting! Notice that ggplot2 treats cyl as a factor. 
+#This time the x-axis does not contain variables like 5 or 7, only the values 
+#that are present in the dataset.
+```
+
+```{r}
+# Change the command below so that cyl is treated as factor
+ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_point()
+```
+
+
+## Exploring ggplot2, part 3
+
+We'll use several datasets throughout the courses to showcase the concepts discussed in the videos. In the previous exercises, you already got to know mtcars. Let's dive a little deeper to explore the three main topics in this course: The data, aesthetics, and geom layers.
+
+The mtcars dataset contains information about 32 cars from 1973 Motor Trend magazine. This dataset is small, intuitive, and contains a variety of continuous and categorical variables.
+
+You're encouraged to think about how the examples and concepts we discuss throughout these data viz courses apply to your own data-sets!
+
+### Instructions
+
+* `ggplot2` has already been loaded for you. Take a look at the first command. It plots the mpg (miles per galon) against the weight (in thousands of pounds). You don't have to change anything about this command.
+
+* In the second call of ggplot() change the color argument in aes() (which stands for aesthetics). The color should be dependent on the displacement of the car engine, found in disp.
+
+* In the third call of ggplot() change the size argument in aes() (which stands for aesthetics). The size should be dependent on the displacement of the car engine, found in disp.
+
+
+```{r}
+# A scatter plot has been made for you
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point()
+
+# Replace ___ with the correct column
+ggplot(mtcars, aes(x = wt, y = mpg, color = disp)) +
+  geom_point()
+
+# Replace ___ with the correct column
+ggplot(mtcars, aes(x = wt, y = mpg, size = disp)) +
+  geom_point()
+
+```
+
+## Understanding Variables
+
+In the previous exercise you saw that `disp` can be mapped onto a color gradient or onto a continuous size scale.
+
+Another argument of `aes()` is the shape of the points. There are a finite number of shapes which ggplot() can automatically assign to the points. However, if you try this command in the console to the right:
+
+
+```{r}
+#ggplot(mtcars, aes(x = wt, y = mpg, shape = disp)) +
+#  geom_point()
+
+```
+
+It gives an error. What does this mean?
+
+```{r}
+# Error: A continuous variable can not be mapped to shape
+# 
+# Correct. The error message 'A continuous variable can not be mapped to shape', 
+# means that shape doesn't exist on a continuous scale here.
+```
+
+## Exploring ggplot2, part 4
+
+The `diamonds` data frame contains information on the prices and various metrics of 50,000 diamonds. Among the variables included are `carat` (a measurement of the size of the diamond) and price. For the next exercises, you'll be using a subset of 1,000 diamonds.
+
+Here you'll use two common geom layer functions: `geom_point()` and `geom_smooth()`. We already saw in the earlier exercises how these are added using the + operator.
+
+### Instructions
+
+* Explore the diamonds data frame with the `str()` function.
+* Use the `+` operator to add `geom_point()` to the first `ggplot()` command. This will tell `ggplot2` to draw points on the plot.
+* Use the `+` operator to add `geom_point()` and `geom_smooth()`. These just stack on each other! `geom_smooth()` will draw a smoothed line over the points.
+
+```{r}
+# Explore the diamonds data frame with str()
+str(diamonds)
+
+# Add geom_point() with +
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point()
+
+
+# Add geom_point() and geom_smooth() with +
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point() +
+  geom_smooth()
+
+# Lovely layering! If you had executed the command without adding a +, it would 
+# produce an error message 'No layers in plot' because you are missing the third 
+# essential layer - the geom layer.
+
+```
+
+## Exploring ggplot2, part 5
+
+The code for last plot of the previous exercise is available in the script on the right. It builds a scatter plot of the diamonds dataset, with carat on the x-axis and price on the y-axis. geom_smooth() is used to add a smooth line.
+
+With this plot as a starting point, let's explore some more possibilities of combining geoms.
+
+### Instructions
+
+* Plot 2 - Copy and paste plot 1, but show only the smooth line, no points.
+* Plot 3 - Show only the smooth line, but color according to clarity by placing the argument color = clarity in the aes() function of your ggplot() call.
+* Plot 4 - Draw translucent colored points.
+  * Copy the ggplot() command from plot 3 (with clarity mapped to color).
+  * Remove the smooth layer.
+  * Add the points layer back in.
+  * Set alpha = 0.4 inside geom_point(). This will make the points 40% transparent.
